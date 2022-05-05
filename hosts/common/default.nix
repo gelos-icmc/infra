@@ -1,6 +1,6 @@
 { pkgs, inputs, hostname, lib, ... }:
 let
-  inherit (lib) mkDefault;
+  inherit (lib) mkDefault nameValuePair mapAttrs';
 in
 {
   imports = [ ../../users.nix ];
@@ -11,7 +11,7 @@ in
     config.allowUnfree = true;
   };
   nix = {
-    registry = inputs;
+    registry = mapAttrs' (name: flake: nameValuePair name { inherit flake; }) inputs;
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
