@@ -8,16 +8,12 @@
 
   outputs = { self, nixpkgs, utils }@inputs:
     let
-      inherit (builtins) attrValues;
       inherit (utils.lib) eachSystemMap defaultSystems;
       inherit (nixpkgs.lib) nixosSystem;
       eachDefaultSystemMap = eachSystemMap defaultSystems;
       mkConfiguration = { hostname, system ? "x86_64-linux" }: nixosSystem {
         inherit system;
-        modules = [
-          ./hosts/${hostname}
-          ./hosts/common
-        ];
+        modules = [ ./hosts/${hostname} ];
         specialArgs = { inherit inputs hostname; };
       };
     in

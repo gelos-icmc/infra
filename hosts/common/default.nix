@@ -1,6 +1,6 @@
 { pkgs, inputs, hostname, lib, ... }:
 let
-  inherit (lib) mapAttrs' nameValuePair mkDefault;
+  inherit (lib) mkDefault;
 in
 {
   imports = [ ../../users.nix ];

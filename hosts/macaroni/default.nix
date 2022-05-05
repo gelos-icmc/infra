@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../common
+    ../common/plasma.nix
+  ];
 
   boot = {
     # Kernel
