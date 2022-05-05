@@ -17,7 +17,6 @@
         modules = [
           ./hosts/${hostname}
           ./hosts/common
-          ./modules
         ];
         specialArgs = { inherit inputs hostname; };
       };
