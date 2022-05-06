@@ -1,25 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ../common
-    ../common/plasma.nix
+    ../common/gnome.nix
+    inputs.hardware.nixosModules.common-gpu-amd
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-pc-hdd
   ];
 
   boot = {
-    # Kernel
-    kernelPackages = pkgs.linuxPackages_zen;
-    # Plymouth (currently only starts at phase 2)
-    plymouth = {
-      enable = true;
-    };
-    # Bootloader configuration
     loader = {
-      timeout = 0;
       systemd-boot = {
         enable = true;
-        consoleMode = "max";
-        editor = false;
       };
       efi.canTouchEfiVariables = true;
     };

@@ -5,7 +5,10 @@ in
 {
   imports = [ ../../users.nix ];
 
-  networking.hostName = hostname;
+  networking = {
+    hostName = hostname;
+    networkmanager.enable = true;
+  };
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -40,5 +43,11 @@ in
       LC_TIME = "pt_BR.UTF-8";
     };
   };
-  time.timeZone = mkDefault "America/Sao_Paulo";
+
+  services = {
+    openssh.enable = true;
+  };
+
+  time.timeZone = "America/Sao_Paulo";
+  system.stateVersion = "21.11";
 }

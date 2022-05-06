@@ -4,9 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
+    hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, utils }@inputs:
+  outputs = { self, nixpkgs, hardware, utils }@inputs:
     let
       inherit (utils.lib) eachSystemMap defaultSystems;
       inherit (nixpkgs.lib) nixosSystem;

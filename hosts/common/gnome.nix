@@ -1,10 +1,13 @@
 {
+  programs = {
+    gnome-terminal.enable = true;
+  };
   services.xserver = {
     enable = true;
-    desktopManager.plasma5 = {
+    desktopManager.gnome = {
       enable = true;
     };
-    displayManager.sddm = {
+    displayManager.gdm = {
       enable = true;
     };
     libinput.enable = true;
