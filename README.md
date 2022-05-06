@@ -5,7 +5,7 @@ Configurações em Nix dos computadores do laboratório da linda sala do GELOS.
 Para instalar em um computador novo, basta usar:
 
 ```bash
-sudo nixos-rebuild switch --flake gitlab:gelos-icmc/infra#nome-do-pc
+sudo nixos-rebuild switch --flake gitlab:gelos-icmc/lab-config#nome-do-pc
 ```
 
 Sendo `nome-do-pc` um de:
