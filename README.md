@@ -43,11 +43,13 @@ nescessário](https://nixos.org/manual/nixos/stable/index.html#ch-installation).
   (instale o git com `nix-env -iA nixos.git`, se nescessário)
 - Faça bootstrap do nix com flakes usando `nix-shell`
 - Caso o computador já esteja nesse repositório:
-    - Certifique-se que a `hardware-configuration.nix` esteja usando labels ou
-      com as UUIDs corretas, corrija se nescessário.
+    - Certifique-se que a `hardware-configuration.nix` tenha as partições
+      listadas usando labels ou com as UUIDs corretas, corrija se nescessário.
     - Instale com `sudo nixos-install --root /mnt --flake .#nome-do-pc`
 - Caso o computador ainda não esteja nesse repositório:
     - Gere a configuração inicial usando `nixos-generate-config --root /mnt`
-    - Siga os passos da [seção acima](#como-adicionar-um-novo-computador), mas
-      ao invés de `nixos-rebuild` use: `sudo nixos-install --root /mnt --flake
-      .#nome-do-pc`
+    - Como na seção [como adicionar um novo computador](#como-adicionar-um-novo-computador):
+        - Crie um diretório `hosts/nome-do-pc`
+        - Copie as configs geradas usando `cp /mnt/etc/nixos/* hosts/nome-do-pc`
+        - Adicione o item para o PC em `flake.nix`
+        - Instale com `sudo nixos-install --root /mnt --flake .#nome-do-pc`.
