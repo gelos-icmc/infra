@@ -3,6 +3,9 @@
   imports = [
     ./hardware-configuration.nix
     ../common
+
+    ./gelos-forms-backend.nix
+    ./nginx.nix
   ];
 
   boot = {

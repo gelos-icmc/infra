@@ -16,25 +16,38 @@
       inherit (inputs.utils.lib) eachSystemMap defaultSystems;
       inherit (inputs.nixpkgs.lib) nixosSystem;
       eachDefaultSystemMap = eachSystemMap defaultSystems;
-      mkConfiguration = { hostname, system ? "x86_64-linux" }: nixosSystem {
+      mkConfiguration = { hostname, system ? "x86_64-linux", overlays }: nixosSystem {
         inherit system;
-        modules = [ ./hosts/${hostname} ];
+        modules = [
+          ./hosts/${hostname}
+          # Aplicar overlays
+          { nixpkgs.overlays = builtins.attrValues overlays; }
+        ];
         specialArgs = { inherit inputs hostname; };
       };
     in
     rec {
+      # Adicionar pacotes exportados por outros flakes
+      overlays = {
+        gelos-forms-backend = inputs.gelos-forms-backend.overlays.default;
+      };
+
       nixosConfigurations = {
         emperor = mkConfiguration {
           hostname = "emperor";
+          inherit overlays;
         };
         galapagos = mkConfiguration {
           hostname = "galapagos";
+          inherit overlays;
         };
         macaroni = mkConfiguration {
           hostname = "macaroni";
+          inherit overlays;
         };
         rockhopper = mkConfiguration {
           hostname = "rockhopper";
+          inherit overlays;
         };
       };
 

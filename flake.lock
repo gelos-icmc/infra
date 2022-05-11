@@ -8,11 +8,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1652281575,
-        "narHash": "sha256-VwNbYRuvuFfVgPsV+JJsGtFbGflRNGKu/qqW9+TargI=",
+        "lastModified": 1652282094,
+        "narHash": "sha256-t2kjnqYFLYP+0JcT2/kFhURrGq6ZK9SzzWp49nRLjeg=",
         "owner": "gelos-icmc",
         "repo": "formsbackend",
-        "rev": "b76c7f56ecfa42c8b8671e4a56a8af5ded9b2ba2",
+        "rev": "80c075f91cfbc577bf9f69f25f0ffb72806bcd99",
         "type": "gitlab"
       },
       "original": {
