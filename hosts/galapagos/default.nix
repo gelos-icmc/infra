@@ -4,8 +4,9 @@
     ./hardware-configuration.nix
     ../common
 
-    ./gelos-forms-backend.nix
-    ./nginx.nix
+    ./gelos-forms-backend.nix # Serviço pra submeter form de registro no grupo
+    ./jitsi.nix # Video conferências
+    ./nginx.nix # Proxy reverso pra todas as aplicações web
   ];
 
   boot = {
