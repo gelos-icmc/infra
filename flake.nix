@@ -5,12 +5,16 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
     hardware.url = "github:nixos/nixos-hardware";
+
+    # Projetos nixificados
+    gelos-forms-backend.url = "gitlab:gelos-icmc/formsbackend/empacotamento";
+    gelos-forms-backend.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, hardware, utils }@inputs:
+  outputs = inputs:
     let
-      inherit (utils.lib) eachSystemMap defaultSystems;
-      inherit (nixpkgs.lib) nixosSystem;
+      inherit (inputs.utils.lib) eachSystemMap defaultSystems;
+      inherit (inputs.nixpkgs.lib) nixosSystem;
       eachDefaultSystemMap = eachSystemMap defaultSystems;
       mkConfiguration = { hostname, system ? "x86_64-linux" }: nixosSystem {
         inherit system;
@@ -35,7 +39,7 @@
       };
 
       devShells = eachDefaultSystemMap (system: {
-        default = import ./shell.nix { pkgs = import nixpkgs { inherit system; }; };
+        default = import ./shell.nix { pkgs = import inputs.nixpkgs { inherit system; }; };
       });
     };
 }
