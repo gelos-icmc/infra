@@ -14,6 +14,9 @@
     };
   };
 
+  # Passwordless sudo (for remote build)
+  security.sudo.extraConfig = "%wheel ALL = (ALL) NOPASSWD: ALL";
+
   networking = {
     hostName = "emperor";
     nameservers = [ "143.107.253.3" ];
