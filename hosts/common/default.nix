@@ -45,7 +45,14 @@ in
   };
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      # Endurecer o SSH, absolutamente essencial
+      passwordAuthentication = false;
+      permitRootLogin = "no";
+      # TODO: Pedir pro STI abrir a porta 22 pra quem ta dentro da USP
+      ports = [ 2112 ];
+    };
   };
 
   time.timeZone = "America/Sao_Paulo";

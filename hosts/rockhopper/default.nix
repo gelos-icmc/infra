@@ -3,7 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common
-    ../common/plasma.nix
+    ../common/gnome.nix
   ];
 
   boot = {
