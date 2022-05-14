@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "gelos-forms-backend": {
+    "gelos-forms": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -8,16 +8,15 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1652282094,
-        "narHash": "sha256-t2kjnqYFLYP+0JcT2/kFhURrGq6ZK9SzzWp49nRLjeg=",
+        "lastModified": 1652561432,
+        "narHash": "sha256-eqa7wAp7e7NQr9l9rDxDx4q/fTNEdfV8wONVb2ZxgII=",
         "owner": "gelos-icmc",
         "repo": "formsbackend",
-        "rev": "80c075f91cfbc577bf9f69f25f0ffb72806bcd99",
+        "rev": "8a77698369e89f2f8a09198f2410b33316b3ac96",
         "type": "gitlab"
       },
       "original": {
         "owner": "gelos-icmc",
-        "ref": "empacotamento",
         "repo": "formsbackend",
         "type": "gitlab"
       }
@@ -55,7 +54,7 @@
     },
     "root": {
       "inputs": {
-        "gelos-forms-backend": "gelos-forms-backend",
+        "gelos-forms": "gelos-forms",
         "hardware": "hardware",
         "nixpkgs": "nixpkgs",
         "utils": "utils_2"

@@ -7,8 +7,8 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     # Projetos nixificados
-    gelos-forms-backend.url = "gitlab:gelos-icmc/formsbackend/empacotamento";
-    gelos-forms-backend.inputs.nixpkgs.follows = "nixpkgs";
+    gelos-forms.url = "gitlab:gelos-icmc/formsbackend";
+    gelos-forms.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:
@@ -29,7 +29,7 @@
     rec {
       # Adicionar pacotes exportados por outros flakes
       overlays = {
-        gelos-forms-backend = inputs.gelos-forms-backend.overlays.default;
+        gelos-forms = inputs.gelos-forms.overlays.default;
       };
 
       nixosConfigurations = {
