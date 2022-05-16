@@ -1,5 +1,5 @@
 {
-  description = "You new nix config";
+  description = "Config dos computadores do GELOS";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -8,7 +8,7 @@
     deploy-rs.url = "github:serokell/deploy-rs";
 
     # Projetos nixificados
-    gelos-forms.url = "gitlab:gelos-icmc/formsbackend/1.0.0";
+    gelos-forms.url = "gitlab:gelos-icmc/formsbackend/1.0.1";
     gelos-forms.inputs.nixpkgs.follows = "nixpkgs";
   };
 
