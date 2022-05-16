@@ -12,36 +12,19 @@
     gelos-forms.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { utils, nixpkgs, deploy-rs, ... }@inputs:
+  outputs = inputs:
     let
-      inherit (utils.lib) eachSystemMap defaultSystems;
-      inherit (nixpkgs.lib) nixosSystem;
-      inherit (builtins) attrValues;
-
-      eachDefaultSystemMap = eachSystemMap defaultSystems;
-      mkConfiguration = { hostname, system ? "x86_64-linux", overlays }: nixosSystem {
-        inherit system;
-        modules = [
-          ./hosts/${hostname}
-          # Aplicar overlays
-          { nixpkgs.overlays = attrValues overlays; }
-        ];
-        specialArgs = { inherit inputs hostname; };
-      };
-      mkDeploy = config: {
-        profiles.system = {
-          user = "root";
-          path = deploy-rs.lib.${config.pkgs.system}.activate.nixos config;
-        };
-      };
+      lib = import ./lib { inherit inputs; };
+      inherit (lib) mkConfiguration mkDeploy eachSystem;
     in
     rec {
       # Adicionar pacotes exportados por outros flakes
-      overlays = {
+      overlays = rec {
         gelos-forms = inputs.gelos-forms.overlays.default;
         deploy-rs = inputs.deploy-rs.overlay;
       };
 
+      # nixos-rebuild
       nixosConfigurations = {
         emperor = mkConfiguration {
           hostname = "emperor";
@@ -61,6 +44,7 @@
         };
       };
 
+      # deploy
       deploy.nodes = {
         galapagos = mkDeploy nixosConfigurations.galapagos // {
           hostname = "galapagos.gelos.club";
@@ -68,21 +52,27 @@
         };
       };
 
-      devShells = eachDefaultSystemMap (system: {
-        default = import ./shell.nix { pkgs = import nixpkgs { inherit system; overlays = attrValues overlays; }; };
+      # nix develop
+      devShells = eachSystem (system: {
+        default = import ./shell.nix {
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = builtins.attrValues overlays;
+          };
+        };
       });
 
-      packages = eachDefaultSystemMap (system: rec {
+      # nix build
+      packages = eachSystem (system: rec {
         inherit (inputs.deploy-rs.packages.${system}) deploy-rs;
-        deploy = deploy-rs;
       });
 
-      apps = eachDefaultSystemMap (system: rec {
+      # nix run
+      apps = eachSystem (system: rec {
         deploy-rs = {
           type = "app";
           program = "${packages.${system}.deploy-rs}/bin/deploy";
         };
-        deploy = deploy-rs;
       });
     };
 }
