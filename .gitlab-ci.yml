@@ -5,6 +5,7 @@ variables:
 
 stages:
   - check
+  - deploy
 
 check:
   # Não rodar pipeline pro push na branch se tiver um MR aberto nela (pipeline duplicado)
@@ -16,3 +17,11 @@ check:
   stage: check
   script:
     - nix flake check
+
+deploy:
+  # Apenas rodar na main
+  rules:
+    - if: $CI_COMMIT_REF_NAME == 'main'
+  stage: deploy
+  script:
+    - nix develop -c deploy --ssh-user cicd --ssh-opts "-p 2112 -i $DEPLOY_KEY"

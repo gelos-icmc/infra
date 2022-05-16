@@ -33,5 +33,5 @@ let
   '';
 in
 pkgs.mkShell {
-  nativeBuildInputs = with pkgs; [ nix git ];
+  nativeBuildInputs = with pkgs; [ nix git deploy-rs.deploy-rs ];
 }

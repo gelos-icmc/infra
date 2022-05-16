@@ -2,7 +2,19 @@
 {
   users = {
     mutableUsers = false;
+    groups = {
+      cicd = {};
+    };
     users = {
+      cicd = {
+        isSystemUser = true;
+        group = "cicd";
+        extraGroups = [ "wheel" ];
+        openssh.authorizedKeys.keys = [
+          # Chave usada pelo CI/CD do repositório
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCY29GorzWKT0KdtQfxdCd9Ceq72TTiJgJwsYHdHDARwZOs5P5/OqKuMYakNaPW2Hsl+KUtOzcaBIp+OiMQwLDFgyhAZdlXnk7bXAC6H/q9lzem25zSMTtjAyxm5XBLbcNbJ4IVntcAl8vWGuPBPCZVoDPgfQcKEILCMef+lJcIq7AIuqdl/hK4DXG79ufKtudsEwUFG9xuLDzhfjt8syJX+A+RJ1D4zLj4L8gBjeGC/l3R3GLg8/QWj4epMD6y6n4c+e0rxhDrkF6Rrl1xLsEs66TLaRoLt4Xz7dgbrXQ+DU8KbmPUF9UTe2nQQNHa7cpUhdODNM+cKcgDxNi9DTWK/8Nnyyl10w+wAr7mz0fwYo+jHKgU7FUzJktbCEUIcqaj9kYTKDObBJLev4IiOCRkc2rxZsQHUH9fetnC7rS+s+HF3tW0nQW08+9j1u6uMZVRC6K9f30YTVjYr9KZpNwNJNybVCXZMyuJjfY9jhNisW/W5J3YDYP5CQlKgx2NX3s= (none)"
+        ];
+      };
       misterio = {
         isNormalUser = true;
         shell = pkgs.fish;
