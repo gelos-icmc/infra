@@ -5,10 +5,7 @@ in
 {
   imports = [ ../../users.nix ];
 
-  networking = {
-    hostName = hostname;
-    networkmanager.enable = true;
-  };
+  networking.hostName = hostname;
 
   nixpkgs = {
     config.allowUnfree = true;
