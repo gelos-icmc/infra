@@ -44,15 +44,16 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1652722951,
-        "narHash": "sha256-UUyQFiazV9tbza8dJ8RMMY896CGdPK2PzOxVJybihX8=",
+        "lastModified": 1652723203,
+        "narHash": "sha256-ZtgVhPUJZwUl8QZ+c+Qkvf+0gyfO1oPwT9Hih1q+57w=",
         "owner": "gelos-icmc",
         "repo": "formsbackend",
-        "rev": "2d728b79c7248244e2d417f9b89bb55724dd931c",
+        "rev": "3beba7daf4689adba562168e2653061cb624c21c",
         "type": "gitlab"
       },
       "original": {
         "owner": "gelos-icmc",
+        "ref": "1.0.0",
         "repo": "formsbackend",
         "type": "gitlab"
       }
