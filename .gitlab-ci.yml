@@ -28,4 +28,4 @@ deploy:
     - cachix authtoken $CACHIX_KEY
     - cachix use gelos-icmc
   script:
-    - cachix watch-exec gelos-icmc -- nix run '.#deploy' -- --ssh-user="cicd" --ssh-opts="-p 2112 -i $DEPLOY_KEY"
+    - cachix watch-exec gelos-icmc -- nix run '.#deploy-rs' -- --ssh-user="cicd" --ssh-opts="-p 2112 -i $DEPLOY_KEY"
