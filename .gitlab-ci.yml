@@ -24,4 +24,4 @@ deploy:
     - if: $CI_COMMIT_REF_NAME == 'main'
   stage: deploy
   script:
-    - nix develop -c deploy --ssh-user cicd --ssh-opts "-p 2112 -i $DEPLOY_KEY"
+    - nix develop -c deploy --ssh-user="cicd" --ssh-opts="-p 2112 -i $DEPLOY_KEY"

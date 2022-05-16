@@ -8,7 +8,7 @@
     deploy-rs.url = "github:serokell/deploy-rs";
 
     # Projetos nixificados
-    gelos-forms.url = "gitlab:gelos-icmc/formsbackend";
+    gelos-forms.url = "gitlab:gelos-icmc/formsbackend/1.0.0";
     gelos-forms.inputs.nixpkgs.follows = "nixpkgs";
   };
 
