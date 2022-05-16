@@ -24,7 +24,7 @@ deploy:
     - if: $CI_COMMIT_REF_NAME == 'main'
   stage: deploy
   before_script:
-    - nix profile install nixpkgs#{ssh,cachix}
+    - nix profile install nixpkgs#{openssh,cachix}
     - cachix authtoken $CACHIX_KEY
     - cachix use gelos-icmc
   script:
