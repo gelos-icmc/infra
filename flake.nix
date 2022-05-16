@@ -71,5 +71,18 @@
       devShells = eachDefaultSystemMap (system: {
         default = import ./shell.nix { pkgs = import nixpkgs { inherit system; overlays = attrValues overlays; }; };
       });
+
+      packages = eachDefaultSystemMap (system: rec {
+        inherit (inputs.deploy-rs.packages.${system}) deploy-rs;
+        deploy = deploy-rs;
+      });
+
+      apps = eachDefaultSystemMap (system: rec {
+        deploy-rs = {
+          type = "app";
+          program = "${packages.${system}.deploy-rs}/bin/deploy";
+        };
+        deploy = deploy-rs;
+      });
     };
 }
