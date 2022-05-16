@@ -45,7 +45,15 @@
           "wheel"
           "networkmanager"
         ];
-        initialPassword = "$6$qROdxayoF6BexsPV$asDqTdzuqIoKXE6GPGb9tBqB7F8gV8TCwPP3KdXitnj9GfIE0gx24zi7ZR064eikj.TT/47R/Vg5s6I55zQ8V/";
+        initialHashedPassword = "$6$qROdxayoF6BexsPV$asDqTdzuqIoKXE6GPGb9tBqB7F8gV8TCwPP3KdXitnj9GfIE0gx24zi7ZR064eikj.TT/47R/Vg5s6I55zQ8V/";
+      };
+      setembru = {
+        isNormalUser = true;
+        extraGroups = [
+            "wheel"
+            "networkmanager"
+        ];
+        initialHashedPassword = "$y$j9T$xLjyGIL9uXlnEvmrf8kJa/$82VTere29qcOesmuTFVbw0efNVpK0xMc9a30gCjW9l8";
       };
     };
   };
