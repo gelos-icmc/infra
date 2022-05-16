@@ -24,4 +24,7 @@ deploy:
     - if: $CI_COMMIT_REF_NAME == 'main'
   stage: deploy
   script:
+    - cachix authtoken $CACHIX_KEY
+    - cachix use
+    - cachix watch-store
     - nix develop -c deploy --ssh-user="cicd" --ssh-opts="-p 2112 -i $DEPLOY_KEY"
