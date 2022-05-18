@@ -25,9 +25,8 @@ deploy:
   stage: deploy
   before_script:
     - nix profile install nixpkgs#{openssh,cachix}
-    - cachix authtoken $CACHIX_KEY
-    - cachix use gelos-icmc
-    - mkdir -p ~/.ssh
-    - cat $KNOWN_HOSTS >> ~/.ssh/known_hosts
+    - cachix authtoken $CACHIX_KEY && cachix use gelos-icmc
+    - mkdir -p ~/.ssh && cp $KNOWN_HOSTS ~/.ssh/known_hosts
+    - chmod 600 $DEPLOY_KEY
   script:
     - cachix watch-exec gelos-icmc -- nix run '.#deploy-rs' -- --ssh-user="cicd" --ssh-opts="-p 2112 -i $DEPLOY_KEY"
