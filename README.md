@@ -21,6 +21,32 @@ cd lab-config
 sudo nixos-rebuild switch --flake .#nome-do-pc
 ```
 
+## Como adicionar um novo usuário
+
+- Antes de tudo, crie uma nova branch com o nome no padrão "user/{seu-user}"! (ex: `git checkout -b user/fulano`)
+- Coloque seu usuário no arquivo [users.nix](https://gitlab.com/gelos-icmc/lab-config/-/blob/main/users.nix)
+- Siga o modelo dos usuários anteriores, se atentando à sintaxe do Nix. Basicamente serão as mesmas configurações, 
+mudando apenas a senha (*initialHashedPassword*), o *sheel* (caso queira usar um outro que não o *bash*) e sua chave ssh (caso queira acessar remotamente os servers).
+
+### Criar senha:
+
+A senha deve estar no padrão unix... 
+
+### Criar chave ssh:
+A chave ssh é necessária caso você queira acessar os servidores por... ssh! Se for o caso, siga os passos:
+
+- `ssh-keygen -t [rsa|ed25519] # use ed25519 ou rsa`
+- COloque o caminho do arquivo onde sua chave privada/publica será salva [caminho pra onde sua chave será salva]`
+- Depois escolha uma **boa** senha, que você não use em outros lugares, mais de 8 caracteres, maiúscula, minúscula, números e caracteres especiais.
+- Repita a senha.
+
+Sua chave privada é seu santo grau e deve ser armazenada num lugar seguro.
+
+Feito os passos, no campo *openssh.authorizedKeys.keys* atribua sua chave pública, que estará num arquivo *.pub* de mesmo nome que o da chave privada.
+ 
+ 
+
+
 ## Como adicionar um novo computador
 Crie uma pasta com o nome do novo PC em hosts com `mkdir hosts/nome-do-pc`.
 
