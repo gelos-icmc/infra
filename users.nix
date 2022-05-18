@@ -7,12 +7,12 @@
     };
     users = {
       cicd = {
-        isSystemUser = true;
+        isNormalUser = true;
         group = "cicd";
         extraGroups = [ "wheel" ];
         openssh.authorizedKeys.keys = [
           # Chave usada pelo CI/CD do repositório
-          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCY29GorzWKT0KdtQfxdCd9Ceq72TTiJgJwsYHdHDARwZOs5P5/OqKuMYakNaPW2Hsl+KUtOzcaBIp+OiMQwLDFgyhAZdlXnk7bXAC6H/q9lzem25zSMTtjAyxm5XBLbcNbJ4IVntcAl8vWGuPBPCZVoDPgfQcKEILCMef+lJcIq7AIuqdl/hK4DXG79ufKtudsEwUFG9xuLDzhfjt8syJX+A+RJ1D4zLj4L8gBjeGC/l3R3GLg8/QWj4epMD6y6n4c+e0rxhDrkF6Rrl1xLsEs66TLaRoLt4Xz7dgbrXQ+DU8KbmPUF9UTe2nQQNHa7cpUhdODNM+cKcgDxNi9DTWK/8Nnyyl10w+wAr7mz0fwYo+jHKgU7FUzJktbCEUIcqaj9kYTKDObBJLev4IiOCRkc2rxZsQHUH9fetnC7rS+s+HF3tW0nQW08+9j1u6uMZVRC6K9f30YTVjYr9KZpNwNJNybVCXZMyuJjfY9jhNisW/W5J3YDYP5CQlKgx2NX3s= (none)"
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDc+1szMFxfrqA99yx50tlqjzWFe4Em+gF+0A+u5VKZXJWdDTtd46KyU4oGmqDoz6Cvq2dHaY6yGrlX/5/glAsfJKcPWpjuBCaSjDyQ750TeQTrXGJ992x+LHaJtP59XCYfpVWF/aRsRroyxyl/3cNwTiB1MareHYEWPzVA2F1XOR+vzaxTMUJisdQ9LBKp4moG9gsyvXvrNvjL1A/mwASqpzbrpK9UVwH1F2KSv3Pj7qMsnDJ3ZWcprUgCst/7kcQm70HXbAE2GbGvguXIA+IIx6ML8A1WYdyzyZXbqQJLRIoegJkkFebVUw0laSVfEd2rHZHDXtu5SBWuKBzoO57cyaLjkIx5OoIepsZ5c0imhyTnyJHuQv79xDpil5bxHH/eiG8YiLrccRV776YTudu/IbAyHxdAM986KyqteyWgjatQHnAcOuEl6qSi3Y4u6qGJMSZ229sux4VmEGZaJqxGLlhsw76+7Ra2sZXhZzozj+rbgfYVLt6GffHiXKUKq1s= (none)"
         ];
       };
       misterio = {
