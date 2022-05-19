@@ -14,7 +14,7 @@
     nginx.virtualHosts."join.gelos.club" = {
       forceSSL = true;
       enableACME = true;
-      locations."/".proxyPass = "http://localhost:${toString config.services.gelos-forms.port}";
+      locations."/".proxyPass = "http://127.0.0.1:${toString config.services.gelos-forms.port}";
     };
   };
 }
