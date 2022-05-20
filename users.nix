@@ -67,6 +67,13 @@
         ];
         initialHashedPassword = "$6$3N3DlmrWd377yPfN$bsAA1hdAFhjeWVrtdRvG8c55Y2TVLjWzv2UaNZAB2owMjRV2wb8iVAJmPBnnGrA8QbFRz.R.PoYapDF3B3Z931";
       };
+      trents = {
+        isNormalUser = true;
+        extraGroups = [
+          "networkmanager"
+        ];
+        initialHashedPassword = "$6$2EcxpAdz$RBdfvHZSOFQ8La5cjH2IrYGWqHamx8yWTZfRUPRM/nYe/JWNIlwFzTyr09MMqNDitN.8eiPjM/XieiSWxld951";
+      };
 
     };
   };
