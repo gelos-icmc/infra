@@ -2,6 +2,12 @@
 
 Configurações em Nix dos computadores do laboratório da linda sala do GELOS.
 
+## Mandamentos:
+
+1. Não pusharás na main
+2. Não usarás a conta do amiguinho para dar um push na main
+3. Não deixarás Setembro utilizar sua conta sem supervisão
+
 ## Como usar as configs existentes
 Sendo `nome-do-pc` um de:
 
