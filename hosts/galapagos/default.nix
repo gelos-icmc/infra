@@ -1,28 +1,14 @@
-{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ../common
+    ../common/server
 
     ./gelos-forms-backend.nix # Serviço pra submeter form de registro no grupo
     ./jitsi.nix # Video conferências
     ./nginx.nix # Proxy reverso pra todas as aplicações web
   ];
 
-  boot = {
-    # Kernel
-    kernelPackages = pkgs.linuxPackages_zen;
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
-
-  # Passwordless sudo (for remote build)
-  security.sudo.extraConfig = "%wheel ALL = (ALL) NOPASSWD: ALL";
-
   networking = {
-    hostName = "galapagos";
     nameservers = [ "143.107.253.3" ];
     interfaces = {
       # Interface WAN

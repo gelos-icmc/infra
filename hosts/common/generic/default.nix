@@ -3,9 +3,17 @@ let
   inherit (lib) mkDefault nameValuePair mapAttrs';
 in
 {
-  imports = [ ../../users.nix ];
+  imports = [ ../../../users ./sops.nix ];
 
   networking.hostName = hostname;
+
+  boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   nixpkgs = {
     config.allowUnfree = true;

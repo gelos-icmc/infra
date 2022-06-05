@@ -1,0 +1,20 @@
+keys:
+  - &servers
+    age:
+    - &server_galapagos age17umps050l2qnz0axplv550025njeq24uv82vpyncyaupk2l5mcas8eekwc
+    - &server_emperor age1l73gjkrrdadrm22029zekq9xwvx3y0388kacd6glqnv63c5pf49shrmqem
+  - &admins
+    pgp:
+    - &admin_misterio 7088C7421873E0DB97FF17C2245CAB70B4C225E9
+  - &all
+    <<: [*servers, *admins]
+creation_rules:
+  # Segredos que todos podem decriptar
+  - path_regex: secrets/[^/]+\.ya?ml$
+    key_groups:
+      - <<: *all
+  - path_regex: users/misterio/pass.yaml
+    key_groups:
+    - pgp:
+      - *admin_misterio
+      <<: *servers

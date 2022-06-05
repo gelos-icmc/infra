@@ -2,26 +2,43 @@
   description = "Config dos computadores do GELOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    utils.url = "github:numtide/flake-utils";
-    hardware.url = "github:nixos/nixos-hardware";
-    deploy-rs.url = "github:serokell/deploy-rs";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    utils = {
+      url = "github:numtide/flake-utils";
+    };
+    hardware = {
+      url = "github:nixos/nixos-hardware";
+    };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Projetos nixificados
-    gelos-forms.url = "gitlab:gelos-icmc/formsbackend/1.0.1";
-    gelos-forms.inputs.nixpkgs.follows = "nixpkgs";
+    gelos-forms = {
+      url = "gitlab:gelos-icmc/formsbackend/1.0.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
     let
       lib = import ./lib { inherit inputs; };
       inherit (lib) mkConfiguration mkDeploy eachSystem;
+      inherit (builtins) attrValues;
     in
     rec {
       # Adicionar pacotes exportados por outros flakes
       overlays = rec {
         gelos-forms = inputs.gelos-forms.overlays.default;
         deploy-rs = inputs.deploy-rs.overlay;
+        sops-nix = inputs.sops-nix.overlay;
       };
 
       # nixos-rebuild
@@ -50,6 +67,10 @@
           hostname = "galapagos.gelos.club";
           sshOpts = [ "-p" "2112" ];
         };
+        emperor = mkDeploy nixosConfigurations.emperor // {
+          hostname = "emperor.gelos.club";
+          sshOpts = [ "-p" "2112" ];
+        };
       };
 
       # nix develop
@@ -57,7 +78,7 @@
         default = import ./shell.nix {
           pkgs = import inputs.nixpkgs {
             inherit system;
-            overlays = builtins.attrValues overlays;
+            overlays = attrValues overlays;
           };
         };
       });

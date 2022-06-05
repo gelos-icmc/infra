@@ -1,24 +1,10 @@
-{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ../common
+    ../common/server
   ];
 
-  boot = {
-    # Kernel
-    kernelPackages = pkgs.linuxPackages_zen;
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
-
-  # Passwordless sudo (for remote build)
-  security.sudo.extraConfig = "%wheel ALL = (ALL) NOPASSWD: ALL";
-
   networking = {
-    hostName = "emperor";
     nameservers = [ "143.107.253.3" ];
     interfaces = {
       # Interface WAN
