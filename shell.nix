@@ -6,7 +6,7 @@ pkgs.mkShell {
     git
 
     # Para deploy
-    ssh-to-pgp
+    ssh-to-age
     gnupg
     age
     deploy-rs.deploy-rs

@@ -6,15 +6,15 @@ keys:
   - &admins
     pgp:
     - &admin_misterio 7088C7421873E0DB97FF17C2245CAB70B4C225E9
-  - &all
-    <<: [*servers, *admins]
+    age:
 creation_rules:
-  # Segredos que todos podem decriptar
+  # Segredos globais
   - path_regex: secrets/[^/]+\.ya?ml$
     key_groups:
-      - <<: *all
+      - <<: [*servers, *admins] # Permite que os servidores e os usuários acessem
+  # Segredos de um usuário (misterio)
   - path_regex: users/misterio/pass.yaml
     key_groups:
     - pgp:
-      - *admin_misterio
-      <<: *servers
+      - *admin_misterio # Permite que o misterio acesse
+      <<: *servers # Permite que os servidores acessem
