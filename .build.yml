@@ -3,6 +3,9 @@ image: nixos/unstable
 packages:
   - nixos.cachix
 
+sources:
+  - https://github.com/gelos-icmc/infra
+
 environment:
   NIX_CONFIG: "experimental-features = nix-command flakes"
 
