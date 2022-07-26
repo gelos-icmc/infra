@@ -1,4 +1,2 @@
-secrets/**.yaml diff=sopsdiffer
-secrets/**.yml diff=sopsdiffer
-users/*/pass*.yaml diff=sopsdiffer
-users/*/pass*.yml diff=sopsdiffer
+hosts/*/secrets.yml diff=sopsdiffer
+hosts/*/secrets.yaml diff=sopsdiffer

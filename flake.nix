@@ -1,16 +1,11 @@
 {
-  description = "Config dos computadores do GELOS";
+  description = "Infraestrutura principal para serviços hospedados pelo GELOS";
 
   inputs = {
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    };
-    utils = {
-      url = "github:numtide/flake-utils";
-    };
-    hardware = {
-      url = "github:nixos/nixos-hardware";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    utils.url = "github:numtide/flake-utils";
+    hardware.url = "github:nixos/nixos-hardware";
+
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,73 +22,56 @@
     };
   };
 
-  outputs = inputs:
-    let
-      lib = import ./lib { inherit inputs; };
-      inherit (lib) mkConfiguration mkDeploy eachSystem;
-      inherit (builtins) attrValues;
-    in
-    rec {
-      # Adicionar pacotes exportados por outros flakes
-      overlays = rec {
-        gelos-forms = inputs.gelos-forms.overlays.default;
-        deploy-rs = inputs.deploy-rs.overlay;
-        sops-nix = inputs.sops-nix.overlay;
-      };
+  outputs = { nixpkgs, utils, ... }@inputs: rec {
+    # Overlays, adicionam ou alteram pacotes do nixpkgs
+    overlays = {
+      gelos-forms = inputs.gelos-forms.overlays.default;
+      deploy-rs = inputs.deploy-rs.overlay;
+      sops-nix = inputs.sops-nix.overlay;
+    };
 
-      # nixos-rebuild
-      nixosConfigurations = {
-        emperor = mkConfiguration {
-          hostname = "emperor";
-          inherit overlays;
-        };
-        galapagos = mkConfiguration {
-          hostname = "galapagos";
-          inherit overlays;
-        };
-        macaroni = mkConfiguration {
-          hostname = "macaroni";
-          inherit overlays;
-        };
-        rockhopper = mkConfiguration {
-          hostname = "rockhopper";
-          inherit overlays;
-        };
-      };
+    # Reexportar pacotes do nixpkgs com as overlays aplicadas
+    legacyPackages = utils.lib.eachDefaultSystemMap (system:
+      import nixpkgs { inherit system; overlays = builtins.attrValues overlays; }
+    );
 
-      # deploy
-      deploy.nodes = {
-        galapagos = mkDeploy nixosConfigurations.galapagos // {
+    # Configuração da máquina
+    # Acessível por 'nixos-rebuild --flake .#galapagos'
+    nixosConfigurations = {
+      galapagos = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        pkgs = legacyPackages.${system};
+        modules = [ ./hosts/galapagos/configuration.nix ];
+        specialArgs = { inherit inputs; };
+      };
+    };
+
+    # Configuração do deploy-rs
+    # Explica o que dar deploy, e pra onde
+    deploy.nodes =
+      let
+        activate = kind: config: inputs.deploy-rs.lib.${config.pkgs.system}.activate.${kind} config;
+      in
+      {
+        galapagos = {
           hostname = "galapagos.gelos.club";
+          sshUser = "admin";
           sshOpts = [ "-p" "2112" ];
-        };
-        emperor = mkDeploy nixosConfigurations.emperor // {
-          hostname = "emperor.gelos.club";
-          sshOpts = [ "-p" "2112" ];
-        };
-      };
-
-      # nix develop
-      devShells = eachSystem (system: {
-        default = import ./shell.nix {
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-            overlays = attrValues overlays;
+          profiles.system = {
+            user = "root";
+            path = activate "nixos" nixosConfigurations.galapagos;
           };
         };
-      });
+      };
 
-      # nix build
-      packages = eachSystem (system: rec {
-        inherit (inputs.deploy-rs.packages.${system}) deploy-rs;
-      });
+    # Permite rodar 'nix run .#deploy' ou apenas 'nix run' para fazer deploy
+    apps = utils.lib.eachDefaultSystemMap (system: rec {
+      deploy = {
+        type = "app";
+        program = "${legacyPackages.${system}.deploy-rs.deploy-rs}/bin/deploy";
+      };
+      default = deploy;
+    });
 
-      # nix run
-      apps = eachSystem (system: rec {
-        deploy-rs = {
-          type = "app";
-          program = "${packages.${system}.deploy-rs}/bin/deploy";
-        };
-      });
-    };
+  };
 }
