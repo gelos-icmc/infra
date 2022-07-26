@@ -1,0 +1,11 @@
+image: nixos/unstable
+
+packages:
+  - nixos.cachix
+
+environment:
+  NIX_CONFIG: "experimental-features = nix-command flakes"
+
+tasks:
+- check: |
+    nix flake check
