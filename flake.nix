@@ -32,7 +32,11 @@
 
     # Reexportar pacotes do nixpkgs com as overlays aplicadas
     legacyPackages = utils.lib.eachDefaultSystemMap (system:
-      import nixpkgs { inherit system; overlays = builtins.attrValues overlays; }
+      import nixpkgs {
+        inherit system;
+        overlays = builtins.attrValues overlays;
+        config.allowUnfree = true;
+      }
     );
 
     # Configuração da máquina
