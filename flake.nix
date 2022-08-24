@@ -75,7 +75,7 @@
     apps = utils.lib.eachDefaultSystemMap (system: rec {
       deploy = {
         type = "app";
-        program = "${legacyPackages.${system}.deploy-rs.deploy-rs}/bin/deploy";
+        program = "${legacyPackages.${system}.deploy-rs}/bin/deploy";
       };
       default = deploy;
     });
