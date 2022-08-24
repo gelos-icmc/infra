@@ -20,6 +20,10 @@
       url = "github:gelos-icmc/site";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    gelos-identidade-visual = {
+      url = "github:gelos-icmc/identidade-visual";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     gelos-forms = {
       url = "gitlab:gelos-icmc/formsbackend/1.0.1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +34,7 @@
     # Overlays, adicionam ou alteram pacotes do nixpkgs
     overlays = {
       gelos-site = inputs.gelos-site.overlays.default;
+      gelos-identidade-visual = inputs.gelos-identidade-visual.overlays.default;
       gelos-forms = inputs.gelos-forms.overlays.default;
     };
 

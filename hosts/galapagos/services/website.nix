@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }:
 let
-  toDateTime = timestamp: builtins.readFile (
+  lastModified = flake: convertDateTime flake.lastModified;
+  convertDateTime = timestamp: builtins.readFile (
     pkgs.runCommandLocal "datetime" { } ''
       dt="$(date -Ru -d @${toString timestamp})"
       echo -n ''${dt/+0000/GMT} > $out
@@ -12,13 +13,23 @@ in
     default = true;
     forceSSL = true;
     enableACME = true;
-    locations."/" = {
-      root = "${pkgs.gelos-site}/public";
-      # Adicionar header indicando data de modificação
-      # Pra permitir que o navegador cacheie
-      extraConfig = ''
-        add_header Last-Modified "${toDateTime inputs.gelos-site.lastModified}";
-      '';
+    locations = {
+      "/" = {
+        root = "${pkgs.gelos-site}/public";
+        # Adicionar header indicando data de modificação
+        # Pra permitir que o navegador cacheie
+        extraConfig = ''
+          add_header Last-Modified "${lastModified inputs.gelos-site}";
+        '';
+      };
+      "/identidade" = {
+        root = "${pkgs.gelos-identidade-visual}";
+        # Adicionar header indicando data de modificação
+        # Pra permitir que o navegador cacheie
+        extraConfig = ''
+          add_header Last-Modified "${lastModified inputs.gelos-identidade-visual}";
+        '';
+      };
     };
   };
 }

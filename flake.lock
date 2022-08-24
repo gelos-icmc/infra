@@ -60,12 +60,33 @@
         "type": "gitlab"
       }
     },
-    "gelos-site": {
+    "gelos-identidade-visual": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ],
         "utils": "utils_3"
+      },
+      "locked": {
+        "lastModified": 1661334237,
+        "narHash": "sha256-dsy3dJPIvg2Y12fGmooUZ3XxFRBy9RQPDyQ+vuuWPT8=",
+        "owner": "gelos-icmc",
+        "repo": "identidade-visual",
+        "rev": "ffe4ebc5d0aaf2b9cfb0b346053bfeef2864b19b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gelos-icmc",
+        "repo": "identidade-visual",
+        "type": "github"
+      }
+    },
+    "gelos-site": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils_4"
       },
       "locked": {
         "lastModified": 1661331869,
@@ -132,11 +153,12 @@
       "inputs": {
         "deploy-rs": "deploy-rs",
         "gelos-forms": "gelos-forms",
+        "gelos-identidade-visual": "gelos-identidade-visual",
         "gelos-site": "gelos-site",
         "hardware": "hardware",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
-        "utils": "utils_4"
+        "utils": "utils_5"
       }
     },
     "sops-nix": {
@@ -193,6 +215,21 @@
     },
     "utils_3": {
       "locked": {
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_4": {
+      "locked": {
         "lastModified": 1652372896,
         "narHash": "sha256-lURGussfF3mGrFPQT3zgW7+RC0pBhbHzco0C7I+ilow=",
         "owner": "numtide",
@@ -206,7 +243,7 @@
         "type": "github"
       }
     },
-    "utils_4": {
+    "utils_5": {
       "locked": {
         "lastModified": 1659877975,
         "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
