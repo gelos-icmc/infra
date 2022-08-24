@@ -16,6 +16,10 @@
     };
 
     # Projetos nixificados
+    gelos-site = {
+      url = "github:gelos-icmc/site";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     gelos-forms = {
       url = "gitlab:gelos-icmc/formsbackend/1.0.1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,9 +29,8 @@
   outputs = { nixpkgs, utils, ... }@inputs: rec {
     # Overlays, adicionam ou alteram pacotes do nixpkgs
     overlays = {
+      gelos-site = inputs.gelos-site.overlays.default;
       gelos-forms = inputs.gelos-forms.overlays.default;
-      deploy-rs = inputs.deploy-rs.overlay;
-      sops-nix = inputs.sops-nix.overlay;
     };
 
     # Reexportar pacotes do nixpkgs com as overlays aplicadas
