@@ -15,15 +15,18 @@ in
     enableACME = true;
     locations = {
       "/" = {
-        root = "${pkgs.gelos-site}/public";
+        alias = "${pkgs.gelos-site}/public/";
         # Adicionar header indicando data de modificação
         # Pra permitir que o navegador cacheie
         extraConfig = ''
           add_header Last-Modified "${lastModified inputs.gelos-site}";
         '';
       };
-      "/identidade" = {
-        root = "${pkgs.gelos-identidade-visual}";
+      "=/identidade" = {
+        return = "301 https://gelos.club/identidade/";
+      };
+      "/identidade/" = {
+        alias = "${pkgs.gelos-identidade-visual}/";
         # Adicionar header indicando data de modificação
         # Pra permitir que o navegador cacheie
         extraConfig = ''
