@@ -10,7 +10,18 @@ in
       enable = true;
       https = true;
       home = "/media/nextcloud";
-      config.adminpassFile = config.sops.secrets.nextcloud-password.path;
+      config = {
+        adminpassFile = config.sops.secrets.nextcloud-password.path;
+        dbhost = "/run/postgresql";
+        dbtype = "pgsql";
+      };
+    };
+    postgresql = {
+      ensureDatabases = [ "nextcloud" ];
+      ensureUsers = [{
+        name = "nextcloud";
+        ensurePermissions = { "DATABASE nextcloud" = "ALL PRIVILEGES"; };
+      }];
     };
 
     nginx.virtualHosts.${hostName} = {
