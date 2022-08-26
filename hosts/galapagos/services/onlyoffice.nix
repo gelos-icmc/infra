@@ -9,9 +9,6 @@
       postgresUser = "onlyoffice";
       port = 8001;
       jwtSecretFile = config.sops.secrets.onlyoffice-secret.path;
-      # Exemplo
-      examplePort = 8002;
-      enableExampleServer = true;
     };
     postgresql = {
       ensureDatabases = [ "onlyoffice" ];
