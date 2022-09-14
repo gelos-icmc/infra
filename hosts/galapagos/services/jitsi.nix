@@ -8,7 +8,7 @@
       DISPLAY_WELCOME_FOOTER = false;
     };
     nginx.enable = true;
-    jibri.enable = true;
+    # jibri.enable = true;
   };
 
   networking.firewall = {
