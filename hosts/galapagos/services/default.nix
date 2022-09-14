@@ -6,6 +6,7 @@
     ./gelos-forms-backend.nix
     ./nextcloud.nix
     ./onlyoffice.nix
+    ./plausible.nix
     ./website.nix
   ];
 }
