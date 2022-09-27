@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   services = {
     plausible = {
@@ -35,6 +35,22 @@
       };
     };
   };
+
+  # Corrigir spam gigantesco nos logs
+  environment.etc =
+    let
+      clickhouseLogVerbosity = "information";
+      original = "${config.services.clickhouse.package}/etc/clickhouse-server/config.xml";
+    in
+    {
+      "clickhouse-server/config.xml" = {
+        source = lib.mkForce (builtins.toFile "config.xml" (
+          builtins.replaceStrings [ "<level>trace</level>" ] [ "<level>${clickhouseLogVerbosity}</level>" ] (
+            builtins.readFile original
+          )
+        ));
+      };
+    };
 
   sops.secrets = {
     plausible-admin-password.sopsFile = ../secrets.yml;
