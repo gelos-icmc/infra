@@ -7,6 +7,10 @@
       SHOW_JITSI_WATERMARK = false;
       DISPLAY_WELCOME_FOOTER = false;
     };
+    config = {
+      prejoinPageEnabled = true;
+      requireDisplayName = true;
+    };
     nginx.enable = true;
     # jibri.enable = true;
   };
