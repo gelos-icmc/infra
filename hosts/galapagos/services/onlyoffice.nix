@@ -1,5 +1,9 @@
 { config, ... }:
 {
+  boot.kernel.sysctl = {
+    # Onlyoffice requires non-privileged users namespaces
+    "kernel.unprivileged_userns_clone" = 1;
+  };
   services = {
     onlyoffice = {
       enable = true;
