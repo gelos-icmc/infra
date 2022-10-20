@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: nix flake lock
-        run: |
+      - uses: cachix/install-nix-action@v18
+      - run: nix flake check
+      - run: |
           nix flake lock \
             --update-input gelos-site \
             --update-input gelos-identidade-visual \
