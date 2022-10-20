@@ -1,6 +1,7 @@
 name: Atualizar alguns inputs do flake
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '*/5 * * * *'
 
