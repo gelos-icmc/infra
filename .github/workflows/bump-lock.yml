@@ -10,7 +10,14 @@ jobs:
     name: Atualizar flake.lock
     runs-on: ubuntu-latest
     steps:
+      - uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: 251209
+          private_key: ${{ secrets.GELOS_BOT_KEY }}
       - uses: actions/checkout@v3
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
       - uses: cachix/install-nix-action@v18
       - run: nix flake check
       - run: |
