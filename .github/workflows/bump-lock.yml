@@ -1,0 +1,21 @@
+name: Atualizar alguns inputs do flake
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  bump:
+    name: Atualizar flake.lock
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: nix flake lock
+        run: |
+          nix flake lock \
+            --update-input gelos-site \
+            --update-input gelos-identidade-visual \
+            --update-input gelos-forms
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Atualizar flake.lock
