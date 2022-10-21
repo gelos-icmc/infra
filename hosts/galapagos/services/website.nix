@@ -1,5 +1,6 @@
 { inputs, pkgs, ... }:
 let
+  mainPkg = flake: flake.packages.${pkgs.system}.default;
   lastModified = flake: convertDateTime flake.lastModified;
   convertDateTime = timestamp: builtins.readFile (
     pkgs.runCommandLocal "datetime" { } ''
@@ -15,7 +16,7 @@ in
     enableACME = true;
     locations = {
       "/" = {
-        alias = "${pkgs.gelos-site}/public/";
+        alias = "${mainPkg inputs.gelos-site}/public/";
         # Adicionar header indicando data de modificação
         # Pra permitir que o navegador cacheie
         extraConfig = ''
@@ -26,7 +27,7 @@ in
         return = "301 https://gelos.club/identidade/";
       };
       "/identidade/" = {
-        alias = "${pkgs.gelos-identidade-visual}/";
+        alias = "${mainPkg inputs.gelos-identidade-visual}/";
         # Adicionar header indicando data de modificação
         # Pra permitir que o navegador cacheie
         extraConfig = ''

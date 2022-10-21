@@ -28,6 +28,13 @@
     };
   };
 
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+    hostPlatform = "x86_64-linux";
+  };
+
   networking = {
     hostName = "galapagos";
     nameservers = [ "143.107.253.3" ];

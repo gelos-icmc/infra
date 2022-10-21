@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, pkgs, ... }:
 {
   imports = [
     inputs.gelos-forms.nixosModules.default
@@ -6,6 +6,7 @@
 
   services = {
     gelos-forms = {
+      package = inputs.gelos-forms.packages.${pkgs.system}.default;
       enable = true;
       database.type = "postgres";
     };
