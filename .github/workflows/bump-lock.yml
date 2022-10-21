@@ -16,6 +16,9 @@ jobs:
         with:
           app_id: 251209
           private_key: ${{ secrets.GELOS_BOT_KEY }}
+      - run: |
+          git config --global user.name "gelos-bot"
+          git config --global user.email "gelos-bot[bot]@users.noreply.github.com"
       - uses: actions/checkout@v3
         with:
           token: ${{ steps.generate-token.outputs.token }}
@@ -26,7 +29,7 @@ jobs:
             --update-input gelos-forms
           nix flake check
       - run: |
-          git config --global user.name "gelos-bot"
-          git config --global user.email "gelos-bot[bot]@users.noreply.github.com"
-          git commit flake.lock -m "flake/lock: atualizar inputs do gelos"
+          if ! git diff flake.lock --quiet; then
+            git commit flake.lock -m "flake/lock: atualizar inputs do gelos"
+          fi
           git push origin main
