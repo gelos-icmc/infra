@@ -89,11 +89,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1666274248,
-        "narHash": "sha256-exQLWgZFy3FNy1deG/kfYImMg0MBNDR0tyIx1TPrbxo=",
+        "lastModified": 1666369192,
+        "narHash": "sha256-SbQqSRVQN6g6Jr7hcodLpinOwZ9RxINm7pzlm3D3anA=",
         "owner": "gelos-icmc",
         "repo": "site",
-        "rev": "a2e3a22cef8cda82ec44a1ff66ef797fbfcd4e1c",
+        "rev": "b0dcffc99c9be66f7ea98dd59772f53b2d239487",
         "type": "github"
       },
       "original": {
@@ -230,11 +230,11 @@
     },
     "utils_4": {
       "locked": {
-        "lastModified": 1652372896,
-        "narHash": "sha256-lURGussfF3mGrFPQT3zgW7+RC0pBhbHzco0C7I+ilow=",
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "0d347c56f6f41de822a4f4c7ff5072f3382db121",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
         "type": "github"
       },
       "original": {
