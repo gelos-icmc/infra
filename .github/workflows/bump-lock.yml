@@ -10,26 +10,32 @@ jobs:
     name: Atualizar flake.lock
     runs-on: ubuntu-latest
     steps:
-      - uses: cachix/install-nix-action@v18
-      - uses: tibdex/github-app-token@v1
+      - name: Instalar nix
+        uses: cachix/install-nix-action@v18
+      - name: Autenticar bot
+        uses: tibdex/github-app-token@v1
         id: generate-token
         with:
           app_id: 251209
           private_key: ${{ secrets.GELOS_BOT_KEY }}
-      - run: |
+      - name: Configurar git
+        run: |
           git config --global user.name "gelos-bot"
           git config --global user.email "gelos-bot[bot]@users.noreply.github.com"
-      - uses: actions/checkout@v3
+      - name: Baixar repositório
+        uses: actions/checkout@v3
         with:
           token: ${{ steps.generate-token.outputs.token }}
-      - run: |
+      - name: Atualizar flake
+        run: |
           nix flake lock \
             --update-input gelos-site \
             --update-input gelos-identidade-visual \
             --update-input gelos-forms
-          nix flake check
-      - run: |
-          if ! git diff flake.lock --quiet; then
-            git commit flake.lock -m "flake/lock: atualizar inputs do gelos"
-          fi
-          git push origin main
+      - name: Verificar flake
+        run: nix flake check
+      - name: Commitar lock
+        run: |
+          git commit flake.lock -m "flake/lock: atualizar inputs do gelos" \
+            && git push origin main \
+            || echo "Nada para commitar"
