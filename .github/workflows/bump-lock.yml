@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Instalar nix
         uses: cachix/install-nix-action@v18
+      - name: Autenticar no cachix
+        uses: cachix/cachix-action@v10
+        with:
+          name: gelos-icmc
+          authToken: '${{ secrets.CACHIX_KEY }}'
       - name: Autenticar bot
         uses: tibdex/github-app-token@v1
         id: generate-token
