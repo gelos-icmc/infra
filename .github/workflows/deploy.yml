@@ -1,6 +1,7 @@
-name: "Buildar o site"
+name: "Deploy na config"
 on:
   push:
+    branches: [ main ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
