@@ -1,4 +1,4 @@
-name: Atualizar alguns inputs do flake
+name: Atualizar flake.lock
 
 on:
   workflow_dispatch:
