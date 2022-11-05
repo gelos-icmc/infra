@@ -33,14 +33,14 @@ jobs:
           token: ${{ steps.generate-token.outputs.token }}
       - name: Atualizar flake
         run: |
-          nix flake lock \
+          nix flake lock --no-warn-dirty \
             --update-input gelos-site \
             --update-input gelos-identidade-visual \
-            --update-input gelos-forms
+            --update-input gelos-forms |& tail +2 > update_message
       - name: Verificar flake
         run: nix flake check
       - name: Commitar lock
         run: |
-          git commit flake.lock -m "flake/lock: atualizar inputs do gelos" \
+          git commit flake.lock -m "flake/lock: atualizar inputs do gelos" -m "$(cat update_message)" \
             && git push origin main \
             || echo "Nada para commitar"
