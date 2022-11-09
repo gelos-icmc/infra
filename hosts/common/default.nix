@@ -45,6 +45,7 @@
         isNormalUser = true;
         extraGroups = [ "wheel" ];
         openssh.authorizedKeys.keys = import ../../keys.nix;
+        initialPassword = "correcthorsebatterystaple";
       };
     };
   };
