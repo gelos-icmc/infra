@@ -38,6 +38,10 @@
         modules = [ ./hosts/galapagos/configuration.nix ];
         specialArgs = { inherit inputs; };
       };
+      emperor = nixpkgs.lib.nixosSystem {
+        modules = [ ./hosts/emperor/configuration.nix ];
+        specialArgs = { inherit inputs; };
+      };
     };
 
     # Configuração do deploy-rs
@@ -53,6 +57,15 @@
           profiles.system = {
             user = "root";
             path = activate "nixos" nixosConfigurations.galapagos;
+          };
+        };
+        emperor = {
+          hostname = "emperor.gelos.club";
+          sshUser = "admin";
+          sshOpts = [ "-p" "2112" ];
+          profiles.system = {
+            user = "root";
+            path = activate "nixos" nixosConfigurations.emperor;
           };
         };
       };
