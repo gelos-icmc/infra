@@ -9,7 +9,6 @@
   networking = {
     hostName = "emperor";
     nameservers = [ "143.107.253.3" ];
-    /*
     interfaces = {
       # Interface WAN
       # Conectada a internet da USP, IP estatico
@@ -28,7 +27,6 @@
         };
       };
     };
-    */
   };
 
   system.stateVersion = "21.11";
