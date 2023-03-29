@@ -16,14 +16,8 @@
     };
 
     # Projetos nixificados
-    gelos-site = {
-      url = "github:gelos-icmc/site";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    gelos-identidade-visual = {
-      url = "github:gelos-icmc/identidade-visual";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    gelos-site.url = "github:gelos-icmc/site";
+    gelos-identidade-visual.url = "github:gelos-icmc/identidade-visual";
   };
 
   outputs = { nixpkgs, utils, ... }@inputs: rec {
