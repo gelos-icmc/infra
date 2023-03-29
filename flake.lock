@@ -38,28 +38,6 @@
         "type": "github"
       }
     },
-    "gelos-forms": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": "utils_2"
-      },
-      "locked": {
-        "lastModified": 1652732591,
-        "narHash": "sha256-6+H2XMRC+JNPtfXw5K9c6fBC/j0Yv2zRQ3h3huXeJYM=",
-        "owner": "gelos-icmc",
-        "repo": "formsbackend",
-        "rev": "427d45c726f3dbe3192034e4284c4aa3bafb2b7c",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "gelos-icmc",
-        "ref": "1.0.1",
-        "repo": "formsbackend",
-        "type": "gitlab"
-      }
-    },
     "gelos-identidade-visual": {
       "inputs": {
         "nixpkgs": [

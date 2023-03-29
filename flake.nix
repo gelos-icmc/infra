@@ -24,10 +24,6 @@
       url = "github:gelos-icmc/identidade-visual";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gelos-forms = {
-      url = "gitlab:gelos-icmc/formsbackend/1.0.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { nixpkgs, utils, ... }@inputs: rec {
