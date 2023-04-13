@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Instalar nix
-        uses: cachix/install-nix-action@v18
+        uses: cachix/install-nix-action@v20
       - name: Autenticar no cachix
         uses: cachix/cachix-action@v10
         with:
