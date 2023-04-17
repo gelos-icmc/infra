@@ -17,6 +17,7 @@ jobs:
         with:
           name: gelos-icmc
           authToken: '${{ secrets.CACHIX_KEY }}'
+          install_url: https://releases.nixos.org/nix/nix-2.12.1/install
       - name: Autenticar bot
         uses: tibdex/github-app-token@v1
         id: generate-token
