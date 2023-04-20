@@ -44,11 +44,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1681734206,
-        "narHash": "sha256-qdWoG5Plc/Kz3YyY62jn2+6ZcSVykLZvtdzeYzSkc2g=",
+        "lastModified": 1682013547,
+        "narHash": "sha256-6WZeIJUaOJCL/jJVsD2TlIaeslNvi2N9DVm236kbAl0=",
         "owner": "gelos-icmc",
         "repo": "identidade-visual",
-        "rev": "f8eb72265e637b37402f821857fc932020ebe3d9",
+        "rev": "245e258363802de5dc5e4ef5490369c5496d3f5c",
         "type": "github"
       },
       "original": {
@@ -63,11 +63,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1681795586,
-        "narHash": "sha256-pUeAKvakkkJTYSz00hq9k8qLNl4BEOKDnkZh5mWRDPw=",
+        "lastModified": 1682013415,
+        "narHash": "sha256-glAq2s+sq8HC6MUonXOL337jOia/kkbVez6Dgj+eC2E=",
         "owner": "gelos-icmc",
         "repo": "site",
-        "rev": "7660f4d6ae6e1e40ae878af9134a1a6f4ecc55a6",
+        "rev": "504ffd6d3b6cc23c5f5f1ad5bcd03d9cd4399cb4",
         "type": "github"
       },
       "original": {
