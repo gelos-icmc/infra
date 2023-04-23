@@ -162,8 +162,7 @@
         "gelos-site": "gelos-site",
         "hardware": "hardware",
         "nixpkgs": "nixpkgs_3",
-        "sops-nix": "sops-nix",
-        "utils": "utils_4"
+        "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
@@ -218,21 +217,6 @@
       }
     },
     "utils_3": {
-      "locked": {
-        "lastModified": 1678901627,
-        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "utils_4": {
       "locked": {
         "lastModified": 1678901627,
         "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",

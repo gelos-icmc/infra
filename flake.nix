@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
-    utils.url = "github:numtide/flake-utils";
     hardware.url = "github:nixos/nixos-hardware";
 
     deploy-rs = {
@@ -20,19 +19,28 @@
     gelos-identidade-visual.url = "github:gelos-icmc/identidade-visual";
   };
 
-  outputs = { nixpkgs, utils, ... }@inputs: rec {
+  outputs = { self, nixpkgs, ... }@inputs: let
+    inherit (self) outputs;
+    forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ];
+  in rec {
     # Configuração da máquina
     # Acessível por 'nixos-rebuild --flake .#galapagos'
     nixosConfigurations = {
       galapagos = nixpkgs.lib.nixosSystem {
         modules = [ ./hosts/galapagos/configuration.nix ];
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs outputs; };
       };
       emperor = nixpkgs.lib.nixosSystem {
         modules = [ ./hosts/emperor/configuration.nix ];
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs outputs; };
       };
     };
+
+    nixosModules = import ./modules;
+
+    packages = forAllSystems (system:
+      import ./pkgs { pkgs = nixpkgs.legacyPackages.${system}; }
+    );
 
     # Configuração do deploy-rs
     # Explica o que dar deploy, e pra onde
@@ -61,7 +69,7 @@
       };
 
     # Permite rodar 'nix run .#deploy' ou apenas 'nix run' para fazer deploy
-    apps = utils.lib.eachDefaultSystemMap (system: rec {
+    apps = forAllSystems (system: rec {
       deploy = {
         type = "app";
         program = "${nixpkgs.legacyPackages.${system}.deploy-rs}/bin/deploy";

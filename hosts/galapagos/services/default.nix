@@ -1,5 +1,6 @@
 {
   imports = [
+    ./kavita.nix
     ./postgresql.nix
     ./nginx.nix
     ./jitsi.nix

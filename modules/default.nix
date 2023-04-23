@@ -1,0 +1,3 @@
+{
+  kavita = import ./kavita.nix;
+}
