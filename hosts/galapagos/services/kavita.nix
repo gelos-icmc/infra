@@ -1,11 +1,16 @@
-{ outputs, pkgs, config, ... }: {
+{ inputs, pkgs, config, ... }: {
+  # ===
+  # TODO: https://github.com/NixOS/nixpkgs/pull/228002
   imports = [
-    outputs.nixosModules.kavita
+    "${inputs.nixpkgs-pr-228002}/nixos/modules/services/web-apps/kavita.nix"
   ];
+  nixpkgs.overlays = [ (final: prev: {
+    kavita = inputs.nixpkgs-pr-228002.legacyPackages.${pkgs.system}.kavita;
+  })];
+  # ===
 
   services.kavita = {
     enable = true;
-    package = outputs.packages.${pkgs.hostPlatform.system}.kavita;
     port = 5002;
     tokenKeyFile = config.sops.secrets.kavita-secret.path;
   };

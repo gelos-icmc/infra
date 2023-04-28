@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    # TODO: https://github.com/NixOS/nixpkgs/pull/228002
+    nixpkgs-pr-228002.url = "github:misterio77/nixpkgs/init-kavita-module";
+
     hardware.url = "github:nixos/nixos-hardware";
 
     deploy-rs = {
@@ -35,12 +38,6 @@
         specialArgs = { inherit inputs outputs; };
       };
     };
-
-    nixosModules = import ./modules;
-
-    packages = forAllSystems (system:
-      import ./pkgs { pkgs = nixpkgs.legacyPackages.${system}; }
-    );
 
     # Configuração do deploy-rs
     # Explica o que dar deploy, e pra onde

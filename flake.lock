@@ -107,6 +107,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-pr-228002": {
+      "locked": {
+        "lastModified": 1682716214,
+        "narHash": "sha256-dgTstpyIRVwKdz8V2rfjizLeoaZ7Ee5Ep/anxrFYq2g=",
+        "owner": "misterio77",
+        "repo": "nixpkgs",
+        "rev": "a6b08493b43c2146f754c495068baa3ecb532193",
+        "type": "github"
+      },
+      "original": {
+        "owner": "misterio77",
+        "ref": "init-kavita-module",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1681613598,
@@ -162,6 +178,7 @@
         "gelos-site": "gelos-site",
         "hardware": "hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-pr-228002": "nixpkgs-pr-228002",
         "sops-nix": "sops-nix"
       }
     },
