@@ -1,9 +1,11 @@
-{ inputs, pkgs, ... }:
-let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   mainPkg = flake: flake.packages.${pkgs.system}.default;
   days = n: toString (n * 60 * 60 * 24);
-in
-{
+in {
   services.nginx.virtualHosts."gelos.club" = {
     default = true;
     forceSSL = true;
@@ -13,7 +15,7 @@ in
         root = "${mainPkg inputs.gelos-site}/public";
       };
       "/assets/" = {
-        root  = "${mainPkg inputs.gelos-site}/public";
+        root = "${mainPkg inputs.gelos-site}/public";
         extraConfig = ''
           add_header Cache-Control "max-age=${days 1}, stale-while-revalidate=${days 30}";
         '';

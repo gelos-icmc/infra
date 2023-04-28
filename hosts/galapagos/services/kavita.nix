@@ -1,12 +1,19 @@
-{ inputs, pkgs, config, ... }: {
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}: {
   # ===
   # TODO: https://github.com/NixOS/nixpkgs/pull/228002
   imports = [
     "${inputs.nixpkgs-pr-228002}/nixos/modules/services/web-apps/kavita.nix"
   ];
-  nixpkgs.overlays = [ (final: prev: {
-    kavita = inputs.nixpkgs-pr-228002.legacyPackages.${pkgs.system}.kavita;
-  })];
+  nixpkgs.overlays = [
+    (final: prev: {
+      kavita = inputs.nixpkgs-pr-228002.legacyPackages.${pkgs.system}.kavita;
+    })
+  ];
   # ===
 
   services.kavita = {
@@ -19,8 +26,7 @@
       "kavita.gelos.club" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass =
-          "http://127.0.0.1:${toString config.services.kavita.port}";
+        locations."/".proxyPass = "http://127.0.0.1:${toString config.services.kavita.port}";
       };
     };
   };

@@ -1,5 +1,8 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   services = {
     plausible = {
       enable = true;
@@ -30,27 +33,24 @@
       "analytics.gelos.club" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass =
-          "http://127.0.0.1:${toString config.services.plausible.server.port}";
+        locations."/".proxyPass = "http://127.0.0.1:${toString config.services.plausible.server.port}";
       };
     };
   };
 
   # Corrigir spam gigantesco nos logs
-  environment.etc =
-    let
-      clickhouseLogVerbosity = "information";
-      original = "${config.services.clickhouse.package}/etc/clickhouse-server/config.xml";
-    in
-    {
-      "clickhouse-server/config.xml" = {
-        source = lib.mkForce (builtins.toFile "config.xml" (
-          builtins.replaceStrings [ "<level>trace</level>" ] [ "<level>${clickhouseLogVerbosity}</level>" ] (
-            builtins.readFile original
-          )
-        ));
-      };
+  environment.etc = let
+    clickhouseLogVerbosity = "information";
+    original = "${config.services.clickhouse.package}/etc/clickhouse-server/config.xml";
+  in {
+    "clickhouse-server/config.xml" = {
+      source = lib.mkForce (builtins.toFile "config.xml" (
+        builtins.replaceStrings ["<level>trace</level>"] ["<level>${clickhouseLogVerbosity}</level>"] (
+          builtins.readFile original
+        )
+      ));
     };
+  };
 
   sops.secrets = {
     plausible-admin-password.sopsFile = ../secrets.yml;

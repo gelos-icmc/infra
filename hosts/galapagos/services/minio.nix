@@ -1,14 +1,12 @@
 let
   port = 9000;
-in
-{
+in {
   services = {
     minio = {
       enable = true;
       listenAddress = ":${toString port}";
       region = "sa-east-1";
     };
-
 
     # Proxy reverso, com HTTPS automático pelo lets encrypt
     nginx.virtualHosts."minio.gelos.club" = {

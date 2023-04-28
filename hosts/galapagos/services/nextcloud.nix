@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-let
-  hostName = "cloud.gelos.club";
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  hostName = "cloud.gelos.club";
+in {
   services = {
     nextcloud = {
       inherit hostName;
@@ -17,11 +19,13 @@ in
       };
     };
     postgresql = {
-      ensureDatabases = [ "nextcloud" ];
-      ensureUsers = [{
-        name = "nextcloud";
-        ensurePermissions = { "DATABASE nextcloud" = "ALL PRIVILEGES"; };
-      }];
+      ensureDatabases = ["nextcloud"];
+      ensureUsers = [
+        {
+          name = "nextcloud";
+          ensurePermissions = {"DATABASE nextcloud" = "ALL PRIVILEGES";};
+        }
+      ];
     };
 
     nginx.virtualHosts.${hostName} = {

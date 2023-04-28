@@ -1,5 +1,9 @@
-{ inputs, pkgs, lib, ... }:
 {
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
   boot = {
     kernelPackages = pkgs.linuxPackages_hardened;
     loader = {
@@ -10,14 +14,14 @@
 
   nix = {
     # Adicionar flake inputs no registry
-    registry = builtins.mapAttrs (_name: value: { flake = value; }) inputs;
+    registry = builtins.mapAttrs (_name: value: {flake = value;}) inputs;
     extraOptions = "experimental-features = nix-command flakes";
     gc = {
       automatic = lib.mkDefault true;
       dates = lib.mkDefault "weekly";
     };
     settings = {
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
     };
   };
@@ -34,7 +38,7 @@
       enable = true;
       passwordAuthentication = false;
       permitRootLogin = "no";
-      ports = [ 2112 ];
+      ports = [2112];
     };
   };
 
@@ -43,7 +47,7 @@
     users = {
       admin = {
         isNormalUser = true;
-        extraGroups = [ "wheel" ];
+        extraGroups = ["wheel"];
         openssh.authorizedKeys.keys = import ../../keys.nix;
         initialPassword = "correcthorsebatterystaple";
       };

@@ -1,9 +1,6 @@
-{ config, ... }:
-
-let
+{config, ...}: let
   port = 4967;
-in
-{
+in {
   services.mtprotoproxy = {
     enable = true;
     adTag = "dec9fe76d73a6fa57810e25eeff9a077";
@@ -21,6 +18,5 @@ in
     inherit port;
   };
 
-  networking.firewall.allowedTCPPorts = [ port ];
-
+  networking.firewall.allowedTCPPorts = [port];
 }

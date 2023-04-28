@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   boot.kernel.sysctl = {
     # Onlyoffice requires non-privileged users namespaces
     "kernel.unprivileged_userns_clone" = 1;
@@ -15,11 +14,13 @@
       jwtSecretFile = config.sops.secrets.onlyoffice-secret.path;
     };
     postgresql = {
-      ensureDatabases = [ "onlyoffice" ];
-      ensureUsers = [{
-        name = "onlyoffice";
-        ensurePermissions = { "DATABASE onlyoffice" = "ALL PRIVILEGES"; };
-      }];
+      ensureDatabases = ["onlyoffice"];
+      ensureUsers = [
+        {
+          name = "onlyoffice";
+          ensurePermissions = {"DATABASE onlyoffice" = "ALL PRIVILEGES";};
+        }
+      ];
     };
 
     nginx.virtualHosts = {
@@ -31,7 +32,7 @@
   };
 
   users.groups.onlyoffice = {
-    members = [ "nginx" "nextcloud" ];
+    members = ["nginx" "nextcloud"];
   };
 
   sops.secrets.onlyoffice-secret = {

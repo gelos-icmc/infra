@@ -19,7 +19,7 @@
   systemd.services.prosody.reloadIfChanged = true;
 
   networking.firewall = {
-    allowedUDPPorts = [ 10000 ];
-    allowedTCPPorts = [ 4443 5222 ];
+    allowedUDPPorts = [10000];
+    allowedTCPPorts = [4443 5222];
   };
 }
