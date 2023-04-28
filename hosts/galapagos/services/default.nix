@@ -8,5 +8,6 @@
     ./onlyoffice.nix
     # ./plausible.nix
     ./website.nix
+    ./mtproxy.nix
   ];
 }
