@@ -74,9 +74,11 @@
       default = deploy;
     });
 
-    nixConfig = {
-      extra-substituers = [ "https://gelos-icmc.cachix.org" ];
-      extra-trusted-public-keys = [ "gelos-icmc.cachix.org-1:IQxtwf+SS2LUWWoPgzYQMAYUvsBA+7tdooE42KRcCWk=" ];
-    };
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  };
+
+  nixConfig = {
+    extra-substituers = [ "https://gelos-icmc.cachix.org" ];
+    extra-trusted-public-keys = [ "gelos-icmc.cachix.org-1:IQxtwf+SS2LUWWoPgzYQMAYUvsBA+7tdooE42KRcCWk=" ];
   };
 }
