@@ -28,13 +28,16 @@
     };
     hostPlatform = "x86_64-linux";
     overlays = [(self: super: {
-      mtprotoproxy = super.mtprotoproxy.overrideAttrs (oldattrs: {
+      mtprotoproxy = super.mtprotoproxy.overrideAttrs (old: {
         src = self.fetchFromGitHub {
           owner = "alexbers";
           repo = "mtprotoproxy";
           rev = "v1.1.1";
           sha256 = "sha256-tQ6e1Y25V4qAqBvhhKdirSCYzeALfH+PhNtcHTuBurs=";
         };
+        patches = (old.patches or []) ++ [
+          ./mtprotoproxy.patch
+        ];
       });
     })];
   };

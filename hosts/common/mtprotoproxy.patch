@@ -1,0 +1,13 @@
+diff --git a/mtprotoproxy.py b/mtprotoproxy.py
+index 3d4ca02..0d50360 100755
+--- a/mtprotoproxy.py
++++ b/mtprotoproxy.py
+@@ -890,7 +890,7 @@ class ProxyReqStreamReader(LayeredStreamReaderBase):
+         if ans_type == RPC_UNKNOWN:
+             return b"", {"SKIP_SEND": True}
+ 
+-        print_err("unknown rpc ans type:", ans_type)
++        # print_err("unknown rpc ans type:", ans_type)
+         return b"", {"SKIP_SEND": True}
+ 
+ 
