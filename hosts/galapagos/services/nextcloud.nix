@@ -12,6 +12,7 @@ in {
       enable = true;
       https = true;
       home = "/media/nextcloud";
+      enableBrokenCiphersForSSE = false;
       config = {
         adminpassFile = config.sops.secrets.nextcloud-password.path;
         dbhost = "/run/postgresql";

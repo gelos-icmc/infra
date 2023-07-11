@@ -36,9 +36,11 @@
   services = {
     openssh = {
       enable = true;
-      passwordAuthentication = false;
-      permitRootLogin = "no";
-      ports = [2112];
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+      };
+      ports = [ 2112 ];
     };
   };
 

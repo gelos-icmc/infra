@@ -2,10 +2,7 @@
   description = "Infraestrutura principal para serviços hospedados pelo GELOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
-    # TODO: https://github.com/NixOS/nixpkgs/pull/228002
-    nixpkgs-pr-228002.url = "github:misterio77/nixpkgs/init-kavita-module";
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     hardware.url = "github:nixos/nixos-hardware";
 
     deploy-rs = {
@@ -18,8 +15,14 @@
     };
 
     # Projetos nixificados
-    gelos-site.url = "github:gelos-icmc/site";
-    gelos-identidade-visual.url = "github:gelos-icmc/identidade-visual";
+    gelos-site = {
+      url = "github:gelos-icmc/site";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gelos-identidade-visual = {
+      url = "github:gelos-icmc/identidade-visual";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
