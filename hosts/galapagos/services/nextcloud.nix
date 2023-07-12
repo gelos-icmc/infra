@@ -8,7 +8,7 @@ in {
   services = {
     nextcloud = {
       inherit hostName;
-      package = pkgs.nextcloud25;
+      package = pkgs.nextcloud26;
       enable = true;
       https = true;
       home = "/media/nextcloud";
