@@ -1,21 +1,4 @@
-{
-  inputs,
-  pkgs,
-  config,
-  ...
-}: {
-  # ===
-  # TODO: https://github.com/NixOS/nixpkgs/pull/228002
-  imports = [
-    "${inputs.nixpkgs-pr-228002}/nixos/modules/services/web-apps/kavita.nix"
-  ];
-  nixpkgs.overlays = [
-    (final: prev: {
-      kavita = inputs.nixpkgs-pr-228002.legacyPackages.${pkgs.system}.kavita;
-    })
-  ];
-  # ===
-
+{ config, ... }: {
   services.kavita = {
     enable = true;
     port = 5002;
