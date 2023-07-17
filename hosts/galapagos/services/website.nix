@@ -28,7 +28,7 @@ in {
         return = "301 https://gelos.club/identidade/";
       };
       "/identidade/" = {
-        root = "${mainPkg inputs.gelos-identidade-visual}/";
+        alias = "${mainPkg inputs.gelos-identidade-visual}/";
       };
     };
   };
