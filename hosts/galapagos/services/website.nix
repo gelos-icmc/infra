@@ -30,6 +30,9 @@ in {
       "/identidade/" = {
         alias = "${mainPkg inputs.gelos-identidade-visual}/";
       };
+
+      # Permalinks mais curtinhos, geralmente usados pra QRs
+      "=/debian-day".return = "301 https://gelos.club/2023/08/02/debian-day.html";
     };
   };
 }
