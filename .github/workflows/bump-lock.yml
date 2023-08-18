@@ -12,6 +12,9 @@ on:
         description: Referência ao flake
         required: true
         default: github:gelos-icmc/site
+      context:
+        description: Contexto do bump (por exemplo, URL do PR)
+        required: false
 
 
 jobs:
@@ -46,5 +49,6 @@ jobs:
           git commit flake.lock \
             -m "flake/lock: atualizar ${{ inputs.name }}" \
             -m "$(cat update_message)" \
+            -m "${{ inputs.context }}" \
           && git push origin main \
           || echo "Nada para commitar"
