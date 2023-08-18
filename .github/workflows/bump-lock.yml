@@ -1,9 +1,18 @@
 name: Atualizar flake.lock
 
 on:
+  # Permite executar pela UI do GitHub ou pelo API
   workflow_dispatch:
-  schedule:
-    - cron: '*/5 * * * *'
+    inputs:
+      name:
+        description: Nome do flake input
+        required: true
+        default: gelos-site
+      ref:
+        description: Referência ao flake
+        required: true
+        default: github:gelos-icmc/site
+
 
 jobs:
   bump:
@@ -12,12 +21,6 @@ jobs:
     steps:
       - name: Instalar nix
         uses: cachix/install-nix-action@v20
-      - name: Autenticar no cachix
-        uses: cachix/cachix-action@v10
-        with:
-          name: gelos-icmc
-          authToken: '${{ secrets.CACHIX_KEY }}'
-          install_url: https://releases.nixos.org/nix/nix-2.12.1/install
       - name: Autenticar bot
         uses: tibdex/github-app-token@v1
         id: generate-token
@@ -34,14 +37,13 @@ jobs:
           token: ${{ steps.generate-token.outputs.token }}
       - name: Atualizar flake
         run: |
-          nix flake lock --no-warn-dirty \
-            --update-input gelos-site \
-            --update-input gelos-identidade-visual \
-            --update-input gelos-forms |& tail +2 > update_message
-      - name: Verificar flake
-        run: nix flake check
+          nix flake lock \
+            --override-input ${{ inputs.name }} ${{ inputs.ref }} \
+          |& tail +2 > update_message
       - name: Commitar lock
         run: |
-          git commit flake.lock -m "flake/lock: atualizar inputs do gelos" -m "$(cat update_message)" \
-            && git push origin main \
-            || echo "Nada para commitar"
+          git commit flake.lock \
+            -m "flake/lock: atualizar ${{ inputs.flake }}" \
+            -m "$(cat update_message | grep -v "^Warning:")" \
+          && git push origin main \
+          || echo "Nada para commitar"
