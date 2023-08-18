@@ -38,12 +38,13 @@ jobs:
       - name: Atualizar flake
         run: |
           nix flake lock \
+            --accept-flake-config \
             --override-input ${{ inputs.name }} ${{ inputs.ref }} \
-          |& grep -v "^Warning:" | tee update_message
+          |& grep -v "warning" | tee update_message
       - name: Commitar lock
         run: |
           git commit flake.lock \
-            -m "flake/lock: atualizar ${{ inputs.flake }}" \
+            -m "flake/lock: atualizar ${{ inputs.name }}" \
             -m "$(cat update_message)" \
           && git push origin main \
           || echo "Nada para commitar"
