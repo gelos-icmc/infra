@@ -46,11 +46,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1692400942,
-        "narHash": "sha256-WiR1qHgiQR0kzk8qSs1ahPTtHIg/iRSG5FqhJufKyqA=",
+        "lastModified": 1692413122,
+        "narHash": "sha256-8KVenc7+WH7Jjyxj9E00e/1k94OY84syhKwVn53f5vE=",
         "owner": "gelos-icmc",
         "repo": "identidade-visual",
-        "rev": "8f2b1dfb9fe758f34c1e089061cd060e66415bbc",
+        "rev": "b0921ee0ad4684567a5832256cb6eb6b7cce46bf",
         "type": "github"
       },
       "original": {
