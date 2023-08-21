@@ -36,14 +36,11 @@ in {
         "=/debian-day".return = "301 https://gelos.club/2023/08/02/debian-day.html";
       };
     };
-    /*
-    TODO: descomentar quando apontarem esse domínio pra gente
     "gelos.icmc.usp.br" = {
       forceSSL = true;
       enableACME = true;
       locations."/".return = "302 https://gelos.club$request_uri";
     };
-    */
     "galapagos.gelos.icmc.usp.br" = {
       forceSSL = true;
       enableACME = true;
