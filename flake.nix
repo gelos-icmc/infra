@@ -59,7 +59,9 @@
           user = "root";
           path = activate "nixos" nixosConfigurations.galapagos;
         };
+        remoteBuild = true;
       };
+      /* Não estamos usando no momento, devido ao ruído alto que ele gera na sala
       emperor = {
         hostname = "emperor.gelos.club";
         sshUser = "admin";
@@ -68,7 +70,9 @@
           user = "root";
           path = activate "nixos" nixosConfigurations.emperor;
         };
+        remoteBuild = true;
       };
+      */
     };
 
     # Permite rodar 'nix run .#deploy' ou apenas 'nix run' para fazer deploy
