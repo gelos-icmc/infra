@@ -35,6 +35,7 @@ in {
         # Permalinks mais curtinhos, geralmente usados pra QRs
         "=/debian-day".return = "301 https://gelos.club/2023/08/02/debian-day.html";
         "=/installfest-4".return = "301 https://gelos.club/2023/08/21/installfest-2023-2.html";
+        "=/if4".return = "301 https://gelos.club/2023/08/21/installfest-2023-2.html";
       };
     };
     "gelos.icmc.usp.br" = {
