@@ -49,4 +49,13 @@ in {
       locations."/".return = "302 https://gelos.club$request_uri";
     };
   };
+
+  services.agate = {
+    enable = true;
+    hostnames = [ "gelos.club" "gelos.icmc.usp.br" ];
+    contentDir = pkgs.writeTextDir "index.gmi" ''
+      Site apenas disponível na web:
+      => https://gelos.club
+    '';
+  };
 }
