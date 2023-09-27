@@ -58,4 +58,5 @@ in {
       => https://gelos.club
     '';
   };
+  networking.firewall.allowedTCPPorts = [ 1965 ];
 }
