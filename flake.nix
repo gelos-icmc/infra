@@ -2,7 +2,7 @@
   description = "Infraestrutura principal para serviços hospedados pelo GELOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     hardware.url = "github:nixos/nixos-hardware";
 
     deploy-rs = {
