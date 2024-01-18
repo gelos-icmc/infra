@@ -8,11 +8,10 @@ in {
   services = {
     nextcloud = {
       inherit hostName;
-      package = pkgs.nextcloud26;
+      package = pkgs.nextcloud27;
       enable = true;
       https = true;
       home = "/media/nextcloud";
-      enableBrokenCiphersForSSE = false;
       config = {
         adminpassFile = config.sops.secrets.nextcloud-password.path;
         dbhost = "/run/postgresql";
@@ -24,7 +23,7 @@ in {
       ensureUsers = [
         {
           name = "nextcloud";
-          ensurePermissions = {"DATABASE nextcloud" = "ALL PRIVILEGES";};
+          ensureDBOwnership = true;
         }
       ];
     };

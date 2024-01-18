@@ -18,7 +18,7 @@
       ensureUsers = [
         {
           name = "onlyoffice";
-          ensurePermissions = {"DATABASE onlyoffice" = "ALL PRIVILEGES";};
+          ensureDBOwnership = true;
         }
       ];
     };
