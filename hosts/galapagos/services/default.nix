@@ -8,5 +8,6 @@
     ./onlyoffice.nix
     ./website.nix
     ./mtproxy.nix
+    ./staging-webserver.nix
   ];
 }
