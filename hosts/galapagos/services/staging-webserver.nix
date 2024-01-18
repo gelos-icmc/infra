@@ -12,7 +12,7 @@
     users.staging = {
       home = "/srv/staging";
       createHome = true;
-      homeMode = "755";
+      homeMode = "775";
       isSystemUser = true;
       group = "staging";
       # TODO: fazer esse usuário ter chave própria
@@ -20,5 +20,7 @@
         config.users.users.admin.openssh.authorizedKeys.keys;
     };
     groups.staging = { };
+    # Permite admin escrever lá sem precisar de sudo
+    users.admin.extraGroups = ["staging"];
   };
 }
