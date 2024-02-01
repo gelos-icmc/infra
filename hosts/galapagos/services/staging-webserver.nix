@@ -6,6 +6,9 @@
     enableACME = true;
     forceSSL = true;
     root = "/srv/staging";
+    extraConfig = ''
+      add_header Cache-Control "max-age=60";
+    '';
   };
 
   users = {
