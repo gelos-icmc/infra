@@ -36,6 +36,8 @@ in {
         "=/debian-day".return = "301 https://gelos.club/2023/08/02/debian-day.html";
         "=/installfest-4".return = "301 https://gelos.club/2023/08/21/installfest-2023-2.html";
         "=/if4".return = "301 https://gelos.club/2023/08/21/installfest-2023-2.html";
+        "=/installfest-5".return = "301 https://gelos.club/2024/03/01/installfest-2024-1.html";
+        "=/if5".return = "301 https://gelos.club/2024/03/01/installfest-2024-1.html";
       };
     };
     "gelos.icmc.usp.br" = {
