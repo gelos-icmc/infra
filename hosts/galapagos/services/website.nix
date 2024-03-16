@@ -50,6 +50,21 @@ in {
       enableACME = true;
       locations."/".return = "302 https://gelos.club$request_uri";
     };
+    "telegram.gelos.club" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/".return = "302 https://t.me/gelos_geral";
+    };
+    "matrix.gelos.club" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/".return = "302 https://matrix.to/#/#gelos:matrix.org";
+    };
+    "youtube.gelos.club" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/".return = "302 https://www.youtube.com/@gelos3943";
+    };
   };
 
   services.agate = {
