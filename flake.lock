@@ -38,6 +38,28 @@
         "type": "github"
       }
     },
+    "gelos-beamer": {
+      "inputs": {
+        "nixpkgs": [
+          "gelos-site",
+          "nixpkgs"
+        ],
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1710974403,
+        "narHash": "sha256-6g3V/Cl/hJ96sfdwunNiYbk5gRUynyArhnCZPk5YJm0=",
+        "owner": "gelos-icmc",
+        "repo": "beamer-theme",
+        "rev": "a4a867dcbcf9e455c3841f96ff9decb93c4d47d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gelos-icmc",
+        "repo": "beamer-theme",
+        "type": "github"
+      }
+    },
     "gelos-identidade-visual": {
       "inputs": {
         "nixpkgs": [
@@ -61,17 +83,18 @@
     },
     "gelos-site": {
       "inputs": {
+        "gelos-beamer": "gelos-beamer",
         "nixpkgs": [
           "nixpkgs"
         ],
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1710609444,
-        "narHash": "sha256-FmMhXEZ01GKa0HXpWnr1ZHhSv6i3uPJBjUx2DM2pYRs=",
+        "lastModified": 1710977941,
+        "narHash": "sha256-0MEHtq2hlQcDbswCZzZqdiX3HxdJorpMpuTfe4m4ZAc=",
         "owner": "gelos-icmc",
         "repo": "site",
-        "rev": "fc7798a11fcd3a20deb393ec76e455e9b73c7ea8",
+        "rev": "f02294385f2ead23a3fa3d78f17f51cebce3d34e",
         "type": "github"
       },
       "original": {
@@ -159,6 +182,21 @@
       }
     },
     "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
