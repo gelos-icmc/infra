@@ -17,6 +17,7 @@ in {
           root = "${mainPkg inputs.gelos-site}/public";
           extraConfig = ''
             add_header Cache-Control "stale-while-revalidate=${minutes 5}";
+            rewrite ^/([0-9]+)/([0-9]+)/([0-9]+)/ata\.html$ /reunioes/$1-$2-$3.html permanent;
           '';
         };
         "/assets/" = {
