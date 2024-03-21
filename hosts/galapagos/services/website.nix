@@ -20,9 +20,6 @@ in {
             add_header Cache-Control "stale-while-revalidate=${minutes 60}";
             # Antigo link de atas
             rewrite ^/([0-9]+)/([0-9]+)/([0-9]+)/ata\.html$ /reunioes/$1-$2-$3.html permanent;
-
-            # Redirecionar pdfs pra atas.gelos.club
-            rewrite ^/reunioes/(.*\.pdf)$ https://atas.gelos.club/$1 temporary;
           '';
         };
         "/assets/" = {
@@ -55,19 +52,6 @@ in {
       forceSSL = true;
       enableACME = true;
       locations."/".return = "302 https://gelos.club$request_uri";
-    };
-
-    "atas.gelos.club" = {
-      forceSSL = true;
-      enableACME = true;
-      locations."/" = {
-        root = "${flakePkg inputs.gelos-site "atas"}";
-        extraConfig = ''
-          add_header Cache-Control "max-age=${minutes 15}";
-          # Redirecionar htmls pra gelos.club/reunioes
-          rewrite ^(.*\.html)$ https://gelos.club/reunioes/$1 temporary;
-        '';
-      };
     };
 
     "telegram.gelos.club" = {
