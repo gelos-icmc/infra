@@ -3,7 +3,8 @@
   pkgs,
   ...
 }: let
-  mainPkg = flake: flake.packages.${pkgs.system}.default;
+  mainPkg = flake: flakePkg flake "default";
+  flakePkg = flake: name: flake.packages.${pkgs.system}.${name};
   minutes = n: toString (n * 60);
   days = n: toString (n * 60 * 60 * 24);
 in {
@@ -17,7 +18,11 @@ in {
           root = "${mainPkg inputs.gelos-site}/public";
           extraConfig = ''
             add_header Cache-Control "stale-while-revalidate=${minutes 5}";
+            # Antigo link de atas
             rewrite ^/([0-9]+)/([0-9]+)/([0-9]+)/ata\.html$ /reunioes/$1-$2-$3.html permanent;
+
+            # Redirecionar pdfs pra atas.gelos.club
+            rewrite ^/reunioes/(.*\.pdf)$ https://atas.gelos.club/$1 temporary;
           '';
         };
         "/assets/" = {
@@ -51,6 +56,20 @@ in {
       enableACME = true;
       locations."/".return = "302 https://gelos.club$request_uri";
     };
+
+    "atas.gelos.club" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        root = "${flakePkg inputs.gelos-site "atas"}";
+        extraConfig = ''
+          add_header Cache-Control "max-age=${minutes 15}";
+          # Redirecionar htmls pra gelos.club/reunioes
+          rewrite ^(.*\.html)$ https://gelos.club/reunioes/$1 temporary;
+        '';
+      };
+    };
+
     "telegram.gelos.club" = {
       forceSSL = true;
       enableACME = true;
