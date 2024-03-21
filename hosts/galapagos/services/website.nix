@@ -17,7 +17,7 @@ in {
         "/" = {
           root = "${mainPkg inputs.gelos-site}/public";
           extraConfig = ''
-            add_header Cache-Control "stale-while-revalidate=${minutes 5}";
+            add_header Cache-Control "stale-while-revalidate=${minutes 60}";
             # Antigo link de atas
             rewrite ^/([0-9]+)/([0-9]+)/([0-9]+)/ata\.html$ /reunioes/$1-$2-$3.html permanent;
 
@@ -28,7 +28,7 @@ in {
         "/assets/" = {
           root = "${mainPkg inputs.gelos-site}/public";
           extraConfig = ''
-            add_header Cache-Control "max-age=${days 1}, stale-while-revalidate=${days 30}";
+            add_header Cache-Control "max-age=${minutes 30}, stale-while-revalidate=${days 1}";
           '';
         };
         "=/identidade" = {
