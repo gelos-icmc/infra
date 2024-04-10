@@ -35,7 +35,10 @@ in {
           alias = "${mainPkg inputs.gelos-identidade-visual}/";
         };
 
-        # Permalinks mais curtinhos, geralmente usados pra QRs
+        # Permalinks mais curtinhos
+        "=/problemas".return = "301 https://gelos.club/projetos/plantao.html#problemas-recorrentes";
+        "=/pobremas".return = "301 https://gelos.club/projetos/plantao.html#problemas-recorrentes";
+        # Eventos
         "=/debian-day".return = "301 https://gelos.club/2023/08/02/debian-day.html";
         "=/installfest-4".return = "301 https://gelos.club/2023/08/21/installfest-2023-2.html";
         "=/if4".return = "301 https://gelos.club/2023/08/21/installfest-2023-2.html";
