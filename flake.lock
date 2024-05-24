@@ -90,11 +90,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1716559245,
-        "narHash": "sha256-e+BJcOe7hmnBMfuxEyd5TVhNZLsCh73/jIJEe36UelE=",
+        "lastModified": 1716559715,
+        "narHash": "sha256-nKCtju8BTCOEknptjrScj4kqFYAD2j5Q/dfLPF4YMZc=",
         "owner": "gelos-icmc",
         "repo": "site",
-        "rev": "083700d303ecdefcb89ca2ebde834ec27cea802b",
+        "rev": "4905d27eed86cb9baa3104ea2acdaf7d40551d33",
         "type": "github"
       },
       "original": {
