@@ -35,6 +35,13 @@ in {
           alias = "${mainPkg inputs.gelos-identidade-visual}/";
         };
 
+        # Alias para páginas pessoais
+        "/~" = {
+          extraConfig = ''
+            rewrite ^/~([a-zA-Z]+)(index.html)?(\.html)?$ /membros/$1/ permanent;
+          '';
+        };
+
         # Permalinks mais curtinhos
         "=/problemas".return = "301 https://gelos.club/projetos/plantao.html#problemas-recorrentes";
         "=/pobremas".return = "301 https://gelos.club/projetos/plantao.html#problemas-recorrentes";
