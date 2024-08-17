@@ -1,7 +1,7 @@
 { config, ... }: {
   services.kavita = {
     enable = true;
-    port = 5002;
+    settings.Port = 5002;
     tokenKeyFile = config.sops.secrets.kavita-secret.path;
   };
   services.nginx = {
