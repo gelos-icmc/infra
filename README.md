@@ -8,3 +8,5 @@ outras conforme o nescessário.
 
 Existe apenas um usuário, `admin`, que é responsável pelo deploy manual ou por
 CI/CD.
+
+Estão aqui também as configurações dos all-in-ones da salinha, `rockhopper` e `macaroni`.
