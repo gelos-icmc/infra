@@ -5,9 +5,9 @@
 { config, pkgs, inputs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-    ];
+  imports = [
+    inputs.nix-flatpak.nixosModules.nix-flatpak
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

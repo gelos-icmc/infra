@@ -48,13 +48,11 @@
         specialArgs = {inherit inputs outputs;};
       };
       macaroni = nixpkgs.lib.nixosSystem {
-        modules = [nix-flatpak.nixosModules.nix-flatpak
-        ./hosts/macaroni/configuration.nix];
+        modules = [./hosts/macaroni/configuration.nix];
         specialArgs = {inherit inputs outputs;};
       };
       rockhopper = nixpkgs.lib.nixosSystem {
-        modules = [nix-flatpak.nixosModules.nix-flatpak
-        ./hosts/rockhopper/configuration.nix];
+        modules = [./hosts/rockhopper/configuration.nix];
         specialArgs = {inherit inputs outputs;};
       };
     };
