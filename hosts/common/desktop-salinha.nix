@@ -1,6 +1,10 @@
-{ config, pkgs, inputs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
   imports = [
     ./default.nix
     inputs.nix-flatpak.nixosModules.nix-flatpak
@@ -35,7 +39,6 @@
     neovim.enable = true;
   };
   environment.systemPackages = [
-    pkgs.curl
     pkgs.kdePackages.kate
   ];
 
@@ -50,41 +53,42 @@
   };
 
   # Zsh
-  environment.shells = [ pkgs.zsh ];
+  environment.shells = [pkgs.zsh];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
-     enable = true;
-     enableCompletion = true;
-     autosuggestions.enable = true;
-     syntaxHighlighting.enable = true;
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
 
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = ["git"];
       theme = "agnoster";
     };
   };
 
   # Sudo
   security.sudo = {
-  enable = true;
-  extraRules = [{
-    commands = [
+    enable = true;
+    extraRules = [
       {
-        command = "${pkgs.systemd}/bin/reboot";
-        options = [ "NOPASSWD" ];
-      }
-      {
-        command = "${pkgs.systemd}/bin/poweroff";
-        options = [ "NOPASSWD" ];
+        commands = [
+          {
+            command = "${pkgs.systemd}/bin/reboot";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "${pkgs.systemd}/bin/poweroff";
+            options = ["NOPASSWD"];
+          }
+        ];
+        groups = ["wheel"];
       }
     ];
-    groups = [ "wheel" ];
-  }];
-  extraConfig = ''
-    Defaults        lecture = always
-  '';
-};
+    extraConfig = ''
+      Defaults        lecture = always
+    '';
+  };
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

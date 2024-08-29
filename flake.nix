@@ -72,7 +72,8 @@
         };
         remoteBuild = true;
       };
-      /* Não estamos usando no momento, devido ao ruído alto que ele gera na sala
+      /*
+         Não estamos usando no momento, devido ao ruído alto que ele gera na sala
       emperor = {
         hostname = "emperor.gelos.club";
         sshUser = "admin";

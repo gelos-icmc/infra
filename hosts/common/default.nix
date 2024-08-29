@@ -44,7 +44,7 @@
         PermitRootLogin = "no";
         PasswordAuthentication = false;
       };
-      ports = [ 2112 ];
+      ports = [2112];
     };
   };
 
