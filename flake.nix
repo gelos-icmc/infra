@@ -30,7 +30,6 @@
   outputs = {
     self,
     nixpkgs,
-    nix-flatpak,
     ...
   } @ inputs: let
     inherit (self) outputs;
