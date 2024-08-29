@@ -71,5 +71,4 @@
   };
 
   time.timeZone = "America/Sao_Paulo";
-  system.stateVersion = "21.11";
 }
