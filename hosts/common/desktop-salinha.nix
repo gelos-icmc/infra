@@ -7,17 +7,12 @@
   ];
 
   networking.networkmanager.enable = true;
-  networking.networkmanager.ethernet.macAddress = "permanent"; # use real Mac address
-  networking.networkmanager.wifi.macAddress = "permanent";
-
 
   i18n.defaultLocale = "pt_BR.UTF-8";
 
   services.xserver.enable = true;
-
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-
   services.xserver.xkb = {
     layout = "br";
     variant = "";
@@ -47,10 +42,12 @@
   # Flatpaks
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.enable = true;
-  services.flatpak.enable = true;
-  services.flatpak.packages = [
-    "com.valvesoftware.SteamLink"
-  ];
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "com.valvesoftware.SteamLink"
+    ];
+  };
 
   # Zsh
   environment.shells = [ pkgs.zsh ];
@@ -84,11 +81,10 @@
     ];
     groups = [ "wheel" ];
   }];
-  extraConfig = with pkgs; ''
+  extraConfig = ''
     Defaults        lecture = always
   '';
 };
-
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
