@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./default.nix
+    ../global
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 

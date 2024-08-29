@@ -2,7 +2,7 @@
   imports = [
     inputs.sops-nix.nixosModules.sops
     ./hardware-configuration.nix
-    ../common
+    ../common/global
   ];
 
   networking = {

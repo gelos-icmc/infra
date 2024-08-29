@@ -5,7 +5,6 @@
   ...
 }: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_hardened;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -54,7 +53,7 @@
       admin = {
         isNormalUser = true;
         extraGroups = ["wheel"];
-        openssh.authorizedKeys.keys = import ../../keys.nix;
+        openssh.authorizedKeys.keys = import ../../../keys.nix;
         initialPassword = "correcthorsebatterystaple";
       };
     };
