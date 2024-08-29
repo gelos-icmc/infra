@@ -33,6 +33,11 @@
     hostPlatform = "x86_64-linux";
   };
 
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
+
   services = {
     openssh = {
       enable = true;
@@ -60,9 +65,9 @@
   security.sudo.extraConfig = "%wheel ALL = (ALL) NOPASSWD: ALL";
 
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = lib.mkDefault "en_US.UTF-8";
     extraLocaleSettings = {
-      LC_TIME = "pt_BR.UTF-8";
+      LC_TIME = lib.mkDefault "pt_BR.UTF-8";
     };
   };
 

@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./default.nix
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
@@ -9,36 +10,8 @@
   networking.networkmanager.ethernet.macAddress = "permanent"; # use real Mac address
   networking.networkmanager.wifi.macAddress = "permanent";
 
-  nix = {
-    # Adicionar flake inputs no registry
-    registry = builtins.mapAttrs (_name: value: {flake = value;}) inputs;
-    extraOptions = "experimental-features = nix-command flakes";
-    gc = {
-      automatic = lib.mkDefault true;
-      dates = lib.mkDefault "weekly";
-    };
-    settings = {
-      trusted-users = ["root" "@wheel"];
-      auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-  };
-
-  time.timeZone = "America/Sao_Paulo";
 
   i18n.defaultLocale = "pt_BR.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
-  };
 
   services.xserver.enable = true;
 
@@ -54,7 +27,6 @@
 
   services.printing.enable = true;
 
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -63,16 +35,13 @@
     pulse.enable = true;
   };
 
-
-  programs.firefox.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
-
+  programs = {
+    firefox.enable = true;
+    neovim.enable = true;
+  };
   environment.systemPackages = [
     pkgs.curl
-    pkgs.git
     pkgs.kdePackages.kate
-    pkgs.neovim
   ];
 
   # Flatpaks
