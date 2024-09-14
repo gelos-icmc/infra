@@ -29,7 +29,7 @@
     content = /* toml */ ''
       [telegram.gelos]
       Token="${config.sops.placeholder.matterbridge-telegram}"
-      RemoteNickFormat="*{NICK}*@{PROTOCOL}: "
+      RemoteNickFormat="\\<*{NICK}*\\@{PROTOCOL}\\>: "
       UseFirstName=true
       MessageFormat="MarkdownV2"
       PreserveThreading=true
@@ -40,14 +40,15 @@
       Password="${config.sops.placeholder.matterbridge-matrix}"
       PreserveThreading=true
       QuoteFormat="{MESSAGE}"
-      RemoteNickFormat="[{PROTOCOL}] <{NICK}> "
+      RemoteNickFormat="<{NICK}@{PROTOCOL}> "
       NoHomeServerSuffix=false
       [discord.gelos]
       Token="${config.sops.placeholder.matterbridge-discord}"
       Server="1284533922578960404"
       AutoWebhooks=true
-      RemoteNickFormat="[{PROTOCOL}] <{NICK}> "
+      RemoteNickFormat="<{NICK}@{PROTOCOL}> "
       PreserveThreading=true
+      UseLocalAvatar=["telegram"]
 
       [[gateway]]
       name="geral"
