@@ -30,10 +30,10 @@
       [telegram.gelos]
       Token="${config.sops.placeholder.matterbridge-telegram}"
       RemoteNickFormat="\\<*{NICK}*\\@{PROTOCOL}\\>: "
-      UseFirstName=true
       MessageFormat="MarkdownV2"
       PreserveThreading=true
       QuoteFormat="{MESSAGE}"
+      UseFirstName=true
       [matrix.gelos]
       Server="https://matrix.org"
       Login="bot-teste-matrix"
@@ -42,6 +42,7 @@
       QuoteFormat="{MESSAGE}"
       RemoteNickFormat="<{NICK}@{PROTOCOL}> "
       NoHomeServerSuffix=false
+      UseUsername=false
       [discord.gelos]
       Token="${config.sops.placeholder.matterbridge-discord}"
       Server="1284533922578960404"
