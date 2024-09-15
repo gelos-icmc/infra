@@ -13,6 +13,15 @@
     });
   })];
 
+  services.nginx.virtualHosts."matterbridge-files.gelos.club" = {
+    enableACME = true;
+    forceSSL = true;
+    root = "/srv/matterbridge-files";
+  };
+  systemd.tmpfiles.rules = [
+    "d '/srv/matterbridge-files' 0755 ${config.services.matterbridge.user} ${config.services.matterbridge.group} - -"
+  ];
+
   services.matterbridge = {
     enable = true;
     configPath = config.sops.templates."matterbridge".path;
@@ -27,6 +36,9 @@
     owner = config.services.matterbridge.user;
     group = config.services.matterbridge.group;
     content = /* toml */ ''
+      [general]
+      MediaDownloadPath="/srv/matterbridge-files"
+      MediaServerDownload="https://matterbridge-files.gelos.club"
       [telegram.gelos]
       Token="${config.sops.placeholder.matterbridge-telegram}"
       RemoteNickFormat="\\<*{NICK}*\\@{PROTOCOL}\\>: "
