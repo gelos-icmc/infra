@@ -41,8 +41,8 @@
       MediaServerDownload="https://matterbridge-files.gelos.club"
       [telegram.gelos]
       Token="${config.sops.placeholder.matterbridge-telegram}"
-      RemoteNickFormat="\\<*{NICK}*\\@{PROTOCOL}\\>: "
-      MessageFormat="MarkdownV2"
+      RemoteNickFormat="&lt;<b>{NICK}</b>@{PROTOCOL}&gt;: "
+      MessageFormat="HTMLNick"
       PreserveThreading=true
       QuoteFormat="{MESSAGE}"
       UseFirstName=true
