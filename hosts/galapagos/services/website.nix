@@ -86,11 +86,11 @@ in {
 
   services.agate = {
     enable = true;
-    hostnames = [ "gelos.club" "gelos.icmc.usp.br" ];
+    hostnames = ["gelos.club" "gelos.icmc.usp.br"];
     contentDir = pkgs.writeTextDir "index.gmi" ''
       Site apenas disponível na web:
       => https://gelos.club
     '';
   };
-  networking.firewall.allowedTCPPorts = [ 1965 ];
+  networking.firewall.allowedTCPPorts = [1965];
 }

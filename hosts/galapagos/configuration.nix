@@ -1,11 +1,12 @@
-{inputs, ...}: {
+{inputs, pkgs, ...}: {
   imports = [
     inputs.sops-nix.nixosModules.sops
     ./hardware-configuration.nix
     ./services
-    ../common
+    ../common/global
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_hardened;
   networking = {
     hostName = "galapagos";
     nameservers = ["143.107.253.3"];

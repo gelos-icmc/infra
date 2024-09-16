@@ -1,4 +1,4 @@
-{ config, ... }: {
+{config, ...}: {
   services.kavita = {
     enable = true;
     settings.Port = 5002;
