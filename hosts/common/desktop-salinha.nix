@@ -161,7 +161,30 @@
   extraConfig = with pkgs; ''
     Defaults        lecture = always
   '';
-};
+  };
+
+  # Permissão para .face no SDDM
+  systemd.services.home711face = {
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig.ExecStart = pkgs.writeShellScript "home711face" ''#!/bin/sh
+      for i in /home/*
+      do
+        touch "$i/CHEETOFLAMINGHOTDILDO.mp3"
+        chmod 711 "$i"
+        echo $i done
+        for j in $i/*
+        do
+          if [[ "$j" != "Público" && "$j" != ".face" && "$j" != "Public" ]]
+          then
+            chmod 700 "$j"
+            echo "$j" done
+          else
+            echo "$j" nope
+          fi
+        done
+      done
+      '';
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
