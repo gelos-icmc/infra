@@ -169,7 +169,7 @@
       serviceConfig.ExecStart = pkgs.writeShellScript "home711face" ''#!/bin/sh
       for i in /home/*
       do
-        touch "$i/CHEETOFLAMINGHOTDILDO.mp3"
+        touch "$i/CHEETOFLAMINGHOTDILDO.mp4"
         chmod 711 "$i"
         echo $i done
         for j in $i/*
