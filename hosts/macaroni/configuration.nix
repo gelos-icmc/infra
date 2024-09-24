@@ -58,6 +58,13 @@
     packages = [
     ];
   };
+  users.users.ze = {
+    isNormalUser = true;
+    description = "Zé Guilherme";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = [
+    ];
+  };
 
 
 }
