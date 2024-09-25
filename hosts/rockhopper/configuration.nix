@@ -76,7 +76,6 @@
     description = "Radio";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = [
-
     ];
   };
 
