@@ -72,6 +72,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = [
     ];
-
+  };
 
 }
