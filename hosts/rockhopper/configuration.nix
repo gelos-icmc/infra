@@ -57,7 +57,12 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = [
     ];
-  };
+  };users.users.radio = {
+    isNormalUser = true;
+    description = "Radio";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = [
+    ]
   users.users.ze = {
     isNormalUser = true;
     description = "Zé Guilherme";
@@ -66,6 +71,12 @@
       pkgs.chromium
     ];
   };
+  users.users.radio = {
+    isNormalUser = true;
+    description = "Radio";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = [
+    ]
 
 
 

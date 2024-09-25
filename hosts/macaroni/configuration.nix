@@ -66,6 +66,12 @@
       pkgs.chromium
     ];
   };
+  users.users.radio = {
+    isNormalUser = true;
+    description = "Radio";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = [
+    ];
 
 
 }
