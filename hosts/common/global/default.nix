@@ -5,7 +5,6 @@
   ...
 }: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_hardened;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -30,7 +29,11 @@
     config = {
       allowUnfree = true;
     };
-    hostPlatform = "x86_64-linux";
+  };
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
   };
 
   services = {
@@ -40,7 +43,7 @@
         PermitRootLogin = "no";
         PasswordAuthentication = false;
       };
-      ports = [ 2112 ];
+      ports = [2112];
     };
   };
 
@@ -50,7 +53,7 @@
       admin = {
         isNormalUser = true;
         extraGroups = ["wheel"];
-        openssh.authorizedKeys.keys = import ../../keys.nix;
+        openssh.authorizedKeys.keys = import ../../../keys.nix;
         initialPassword = "correcthorsebatterystaple";
       };
     };
@@ -60,12 +63,11 @@
   security.sudo.extraConfig = "%wheel ALL = (ALL) NOPASSWD: ALL";
 
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = lib.mkDefault "en_US.UTF-8";
     extraLocaleSettings = {
-      LC_TIME = "pt_BR.UTF-8";
+      LC_TIME = lib.mkDefault "pt_BR.UTF-8";
     };
   };
 
   time.timeZone = "America/Sao_Paulo";
-  system.stateVersion = "21.11";
 }

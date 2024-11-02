@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   # VHost do nginx para servir coisas tipo previews de PRs
 
   services.nginx.virtualHosts."staging.gelos.club" = {
@@ -22,7 +21,7 @@
       openssh.authorizedKeys.keys =
         config.users.users.admin.openssh.authorizedKeys.keys;
     };
-    groups.staging = { };
+    groups.staging = {};
     # Permite admin escrever lá sem precisar de sudo
     users.admin.extraGroups = ["staging"];
   };
