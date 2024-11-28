@@ -135,6 +135,16 @@
       [[gateway.inout]]
       account="matrix.gelos"
       channel="#gelos-reunioes:matrix.org"
+
+      [[gateway]]
+      name="anuncios"
+      enable=true
+      [[gateway.inout]]
+      account="telegram.gelos"
+      channel="-1001671420611/274450"
+      [[gateway.inout]]
+      account="matrix.gelos"
+      channel="#gelos-anuncios:matrix.org"
     '';
   };
 }
