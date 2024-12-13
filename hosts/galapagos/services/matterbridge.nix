@@ -155,6 +155,26 @@
       [[gateway.inout]]
       account="matrix.gelos"
       channel="#gelos-meta:matrix.org"
+
+      [[gateway]]
+      name="workshops"
+      enable=true
+      [[gateway.inout]]
+      account="telegram.gelos"
+      channel="-1001671420611/40938"
+      [[gateway.inout]]
+      account="matrix.gelos"
+      channel="#gelos-gt-workshops:matrix.org"
+
+      [[gateway]]
+      name="opensourceshow"
+      enable=true
+      [[gateway.inout]]
+      account="telegram.gelos"
+      channel="-1001671420611/35686"
+      [[gateway.inout]]
+      account="matrix.gelos"
+      channel="#gelos-gt-open-source-show:matrix.org"
     '';
   };
 }
