@@ -1,10 +1,13 @@
 {inputs, ...}: {
   imports = [
     inputs.sops-nix.nixosModules.sops
+    inputs.nix-minecraft.nixosModules.minecraft-servers
     ./hardware-configuration.nix
     ./services
     ../common
   ];
+  # Para o servidor de Minecraft
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   networking = {
     hostName = "galapagos";
