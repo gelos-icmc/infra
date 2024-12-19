@@ -22,7 +22,7 @@ in {
 
         package = pkgs.forgeServers.forge-1_20_1;
         serverProperties = {
-          server-port = 25572;
+          server-port = 25565;
           online-mode = true;
         };
 
@@ -30,7 +30,15 @@ in {
       };
     };
     nginx.virtualHosts."minecraft.gelos.club" = {
-      locations."/".proxyPass = "http://localhost:25572";
+      locations."/"= { 
+        proxyPass = "http://localhost:25565";
+        extraConfig = ''
+          limit_req zone=serverlimit burst=24 delay=24;
+        '';
+      };
     };
+    nginx.appendHttpConfig = ''
+      limit_req_zone $binary_remote_addr zone=serverlimit:10m rate=24r/s;
+    '';
   };
 }
