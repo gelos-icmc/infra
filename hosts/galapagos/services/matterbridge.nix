@@ -175,6 +175,16 @@
       [[gateway.inout]]
       account="matrix.gelos"
       channel="#gelos-gt-open-source-show:matrix.org"
+      
+      [[gateway]]
+      name="serverminecraft"
+      enable=true
+      [[gateway.inout]]
+      account="telegram.gelos"
+      channel="-1001671420611/288908"
+      [[gateway.inout]]
+      account="matrix.gelos"
+      channel="#gelos-gi-minecraft:matrix.org"
     '';
   };
 }
