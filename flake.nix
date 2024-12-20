@@ -25,6 +25,11 @@
       url = "github:gelos-icmc/identidade-visual";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Para o servidor de Minecraft
+    nix-minecraft = {
+      url = "github:ViniciusDMSantos/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
