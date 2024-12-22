@@ -23,6 +23,7 @@ in {
       serverProperties = {
         server-port = 25565;
         online-mode = true;
+        allow-flight = true;
       };
       symlinks = {
         "mods" = "${modpack}/mods";
