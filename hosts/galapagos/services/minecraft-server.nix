@@ -21,6 +21,7 @@ in {
       whitelist = import ./minecraft-whitelist.nix;
       package = pkgs.forgeServers.forge-1_20_1;
       serverProperties = {
+        white-list = true;
         server-port = 25565;
         online-mode = true;
         allow-flight = true;
