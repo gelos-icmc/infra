@@ -29,7 +29,7 @@ in {
       symlinks = {
         "mods" = "${modpack}/mods";
       };
-      jvmOpts = "-Xms1G -Xmx6G -XX:+UseParallelGC";
+      jvmOpts = "-Xms1G -Xmx8G -XX:+UseParallelGC";
     };
   };
 }
