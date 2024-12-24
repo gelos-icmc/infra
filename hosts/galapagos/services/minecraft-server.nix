@@ -7,7 +7,7 @@
 modpack = pkgs.fetchPackwizModpack rec {
   version = "949753cf85edc903ab777725cbcc215d1bc05f50";
   url = "https://github.com/gelos-icmc/Icepack/raw/${version}/pack.toml";
-  packHash = "sha256-NFFXw2Gy8gnq556GYhmFzEmtK8bzxHC/00in+ZwH6Tg=";
+  packHash = "sha256-KZ5xu30Db749n6DTYhbEXJhPksDundxVlNx6KHl6DGM=";
 };
 
 in {
