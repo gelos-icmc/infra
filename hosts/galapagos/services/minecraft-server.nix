@@ -22,8 +22,10 @@ in {
       package = pkgs.forgeServers.forge-1_20_1;
       serverProperties = {
         white-list = true;
+        spawn-protection = 0;
         server-port = 25565;
         online-mode = true;
+        max-tick-time = 300000;
         allow-flight = true;
       };
       symlinks = {
