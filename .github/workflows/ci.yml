@@ -34,7 +34,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: determinatesystems/nix-installer-action@v4
-      - uses: determinatesystems/magic-nix-cache-action@v2
       - env:
           NIXOS_CONFIG: ${{ matrix.system }}
         run: |
