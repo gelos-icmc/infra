@@ -5,9 +5,9 @@
   ...
 }: let
 modpack = pkgs.fetchPackwizModpack rec {
-  version = "0de5f7ed44917527bff4379b1c301f1e36825ff7";
+  version = "d4d74bcc94050fddfd9461422d4d255ab5359f69";
   url = "https://github.com/gelos-icmc/Icepack/raw/${version}/pack.toml";
-  packHash = "sha256-beUVd3J+sx2bnBMJ3E9ItFfm9zXZfF3PChhQ3PFX0LE=";
+  packHash = "sha256-I3dr4Lddx/X950uq667v3t2jQdo7CY/+nLjTZBg97GI=";
 };
 
 in {
