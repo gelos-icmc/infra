@@ -31,6 +31,9 @@ in {
       symlinks = {
         "mods" = "${modpack}/mods";
       };
+      files = {
+        "config" = "${modpack}/config";
+      };
       jvmOpts = "-Xms1G -Xmx8G -XX:+UseParallelGC";
     };
   };
