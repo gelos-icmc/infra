@@ -185,6 +185,9 @@
       [[gateway.inout]]
       account="matrix.gelos"
       channel="#gelos-gi-minecraft:matrix.org"
+      [[gateway.inout]]
+      account="discord.gelos"
+      channel="gi-minecraft"
     '';
   };
 }
