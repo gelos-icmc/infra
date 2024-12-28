@@ -15,6 +15,10 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-minecraft = {
+      url = "github:misterio77/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Projetos nixificados
     gelos-site = {
@@ -23,11 +27,6 @@
     };
     gelos-identidade-visual = {
       url = "github:gelos-icmc/identidade-visual";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Para o servidor de Minecraft
-    nix-minecraft = {
-      url = "github:ViniciusDMSantos/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
