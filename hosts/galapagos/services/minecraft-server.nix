@@ -36,6 +36,10 @@ in {
       };
       jvmOpts = "-Xms1G -Xmx8G -XX:+UseParallelGC";
       enableReload = true;
+      extraStartPre = ''
+        find config -type d -exec chmod 755 {} \+
+        find config -type f -exec chmod 644 {} \+
+      '';
     };
   };
 }
