@@ -63,7 +63,6 @@
     description = "Zé Guilherme";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = [
-      pkgs.chromium
     ];
   };
   users.users.radio = {
