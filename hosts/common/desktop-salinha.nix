@@ -82,6 +82,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -161,7 +166,7 @@
   extraConfig = with pkgs; ''
     Defaults        lecture = always
   '';
-};
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
