@@ -7,24 +7,24 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ../common/desktop-salinha.nix
       ./hardware-configuration.nix
+      ../common
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "rockhopper"; # Define your hostname.
+  networking.hostName = "macaroni"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tiago = {
+  users.users.gelosentity = {
     isNormalUser = true;
-    description = "GELOS-Tiago"; # infra (nixos config) cloned on this user's home
+    description = "GELOS-Entity"; # infra (nixos config) cloned on this user's home
     extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "gelos2024";
     packages = [
@@ -72,7 +72,5 @@
     packages = [
     ];
   };
-
-
 
 }

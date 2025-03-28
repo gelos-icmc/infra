@@ -4,7 +4,7 @@ keys:
   - &admins
     - &admin_misterio 7088C7421873E0DB97FF17C2245CAB70B4C225E9
 creation_rules:
-  - path_regex: hosts/galapagos/secrets.yml$
+  - path_regex: hosts/servers/galapagos/secrets.yml$
     key_groups:
     - age:
       - *server_galapagos

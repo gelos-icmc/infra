@@ -44,19 +44,19 @@
     # Acessível por 'nixos-rebuild --flake .#galapagos'
     nixosConfigurations = {
       galapagos = nixpkgs.lib.nixosSystem {
-        modules = [./hosts/galapagos/configuration.nix];
+        modules = [./hosts/servers/galapagos/configuration.nix];
         specialArgs = {inherit inputs outputs;};
       };
       emperor = nixpkgs.lib.nixosSystem {
-        modules = [./hosts/emperor/configuration.nix];
+        modules = [./hosts/servers/emperor/configuration.nix];
         specialArgs = {inherit inputs outputs;};
       };
       macaroni = nixpkgs.lib.nixosSystem {
-        modules = [./hosts/macaroni/configuration.nix];
+        modules = [./hosts/desktops/macaroni/configuration.nix];
         specialArgs = {inherit inputs outputs;};
       };
       rockhopper = nixpkgs.lib.nixosSystem {
-        modules = [./hosts/rockhopper/configuration.nix];
+        modules = [./hosts/desktops/rockhopper/configuration.nix];
         specialArgs = {inherit inputs outputs;};
       };
     };
