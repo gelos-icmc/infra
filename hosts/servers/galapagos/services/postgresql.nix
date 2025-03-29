@@ -1,5 +1,0 @@
-{
-  services.postgresql = {
-    enable = true;
-  };
-}
